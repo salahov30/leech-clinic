@@ -1,0 +1,98 @@
+.specialists-content h1 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.specialists-content p {
+  margin-bottom: 50px;
+  color: #575c63;
+  line-height: 26px;
+}
+
+.specialist-card {
+  border: 1px solid #e6e6e6;
+  border-radius: 15px;
+  margin: 8px 0;
+  transition: transform .3s, box-shadow .3s, -webkit-transform .3s;
+  transition-timing-function: cubic-bezier(.25, .1, .25, 1);
+}
+
+.specialist-card:hover {
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, .12);
+}
+
+.specialist-card a {
+  text-decoration: none;
+}
+
+.specialist-icon {
+  color: rgba(235, 77, 75, 0.5);
+}
+
+.icon-wrapper {
+  text-align: center;
+}
+
+.card-header .card-image {
+  border-radius: 15px 15px 0 0;
+  width: 100%;
+  height: 530px;
+}
+
+.card-content {
+  padding: 35px;
+  text-align: center;
+}
+
+.card-content h3 {
+  font-size: 21px;
+  letter-spacing: -.3px;
+  color: #333;
+  font-weight: 400;
+  text-align: center;
+}
+
+.card-content span {
+  display: block;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 25px;
+  color: rgba(235, 77, 75, 0.7);
+}
+
+.card-content a {
+  display: inline-block;
+  margin: 25px 0;
+  padding: 15px 25px;
+  border-radius: 5px;
+  background-color: rgba(235, 77, 75, 0.1);
+  color: #eb4d4b;
+  transition: .3s;
+}
+
+.card-content a:hover {
+  background-color: rgba(235, 77, 75, 0.1);
+  border: 1px solid #eb4d4b;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+
+  .specialists-content h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+  }
+
+  .icon-wrapper {
+    margin-bottom: 50px;
+  }
+
+  .card-header .card-image {
+    height: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .card-header .card-image {
+    height: 450px;
+  }
+}

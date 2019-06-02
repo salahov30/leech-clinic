@@ -1,0 +1,9 @@
+  .circle {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .angle {
+    border-radius: 15px;
+    overflow: hidden;
+  }
