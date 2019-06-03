@@ -1,63 +1,83 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import axios from "axios";
 
-import Menu from '../Menu';
-import Button from '../Button';
-import Input from '../Input';
-import Icon from '../Icon';
-import './registration.css';
+import Menu from "../Menu";
+import Button from "../Button";
+import Input from "../Input";
+import Icon from "../Icon";
+import PreloaderButton from "../PreloaderButton";
+import "./registration.css";
 
 export class Registration extends Component {
+  _isMounted = false;
+
   state = {
-    name: '',
-    phone: '',
-    password: '',
-    error: '',
+    name: "",
+    phone: "",
+    password: "",
+    error: "",
+    isLoaded: false
   };
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
   handleNameChange = ({ target: { value } }) => {
     this.setState({
-      name: value,
+      name: value
     });
   };
 
   handlePhoneChange = ({ target: { value } }) => {
     this.setState({
-      phone: value,
+      phone: value
     });
   };
 
   handlePasswordChange = ({ target: { value } }) => {
     this.setState({
-      password: value,
+      password: value
     });
   };
 
   onSubmit = e => {
     e.preventDefault();
+
+    this.setState({
+      isLoaded: true
+    });
+
     const User = {
       name: this.state.name,
       phone: this.state.phone,
-      password: this.state.password,
+      password: this.state.password
     };
     axios
-      .post('http://localhost:5000/api/user/register', User)
+      .post("http://localhost:5000/api/user/register", User)
       .then(res => {
-        this.props.history.push('/login');
-        this.setState({
-          user: res.data,
-        });
+        this.props.history.push("/login");
+        if (this._isMounted) {
+          this.setState({
+            user: res.data
+          });
+        }
       })
       .catch(err => {
         this.setState({
-          error: err,
+          error: err
         });
       });
   };
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
-    const { error } = this.state;
+    const { error, isLoaded } = this.state;
     return (
       <>
         <Helmet>
@@ -82,7 +102,7 @@ export class Registration extends Component {
                 </div>
                 <form className="auth-form">
                   <div className="error">
-                    {error ? error.request.response : ''}
+                    {error ? error.request.response : ""}
                   </div>
                   <Input
                     className="auth-input"
@@ -111,13 +131,17 @@ export class Registration extends Component {
                     onChange={this.handlePasswordChange}
                     required
                   />
-                  <Button
-                    type="submit"
-                    onClick={this.onSubmit}
-                    className="btn-signup"
-                  >
-                    Зарегистрироваться
-                  </Button>
+                  {!isLoaded ? (
+                    <Button
+                      type="submit"
+                      className="btn-signup"
+                      onClick={this.onSubmit}
+                    >
+                      Зарегистрироваться
+                    </Button>
+                  ) : (
+                    <PreloaderButton />
+                  )}
                   <Link to="/login" className="auth-link">
                     Войти
                     <Icon className="auth-icon">

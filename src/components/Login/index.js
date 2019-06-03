@@ -1,65 +1,81 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import axios from "axios";
 
-import Menu from '../Menu';
-import Button from '../Button';
-import Input from '../Input';
-import Icon from '../Icon';
-import { getJwt } from '../../helpers/jwt';
-import './auth.css';
+import Menu from "../Menu";
+import Button from "../Button";
+import Input from "../Input";
+import Icon from "../Icon";
+import { getJwt } from "../../helpers/jwt";
+import PreloaderButton from "../PreloaderButton";
+
+import "./auth.css";
 
 class Login extends Component {
+  _isMounted = false;
+
   state = {
-    phone: '',
-    password: '',
-    user: '',
-    error: '',
+    phone: "",
+    password: "",
+    user: "",
+    error: "",
+    isLoaded: false
   };
 
   componentDidMount() {
+    this._isMounted = true;
     const jwt = getJwt();
     if (jwt) {
-      this.props.history.push('/profile');
+      this.props.history.push("/profile");
     }
   }
 
   handleInputChange = ({ target }) => {
     this.setState({
-      [target.name]: target.value,
+      [target.name]: target.value
     });
   };
 
   onSubmit = e => {
     e.preventDefault();
+    if (this._isMounted) {
+      this.setState({
+        isLoaded: true
+      });
+    }
     const User = {
       phone: this.state.phone,
-      password: this.state.password,
+      password: this.state.password
     };
     axios
-      .post('http://localhost:5000/api/user/login', User)
+      .post("http://localhost:5000/api/user/login", User)
       .then(res => {
-        localStorage.setItem('auth-token', res.data);
-        this.props.history.push('/profile');
-        this.setState({
-          user: res.data,
-        });
+        localStorage.setItem("auth-token", res.data);
+        this.props.history.push("/profile");
+        if (this._isMounted) {
+          this.setState({
+            user: res.data
+          });
+        }
       })
       .catch(err => {
         this.setState({
-          error: err,
+          error: err
         });
       });
   };
 
   if(jwt) {
-    this.props.history.redirect('/login');
+    this.props.history.redirect("/login");
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
-    const { error } = this.state;
-
+    const { error, isLoaded } = this.state;
     return (
       <>
         <Helmet>
@@ -77,7 +93,7 @@ class Login extends Component {
                 </span>
                 <form className="auth-form">
                   <div className="error">
-                    {error ? error.request.response : ''}
+                    {error ? error.request.response : ""}
                   </div>
                   <Input
                     className="auth-input"
@@ -97,9 +113,13 @@ class Login extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
-                  <Button type="submit" onClick={this.onSubmit}>
-                    Войти
-                  </Button>
+                  {!isLoaded ? (
+                    <Button type="submit" onClick={this.onSubmit}>
+                      Войти
+                    </Button>
+                  ) : (
+                    <PreloaderButton />
+                  )}
                   <Link to="/registration" className="auth-link">
                     Регистрация
                     <Icon className="auth-icon">

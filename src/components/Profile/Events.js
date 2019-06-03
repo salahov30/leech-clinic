@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 
 const PersonalInfo = props => {
-  const { user } = props;
   return (
     <>
       <div className="profile__heading">

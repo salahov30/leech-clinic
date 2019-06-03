@@ -1,11 +1,10 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import React from "react";
+import { Helmet } from "react-helmet";
 
-import Menu from '../Menu';
-import Calandar from '../Calendar';
-import Image from '../Image';
-import Button from '../Button';
-import './appointment.css';
+import Menu from "../Menu";
+import Calandar from "../Calendar";
+import SpecialistCard from "../SpecialistCard";
+import "./appointment.css";
 
 const Appointment = () => {
   return (
@@ -122,41 +121,37 @@ const Appointment = () => {
                 <h2>Выберите специалиста</h2>
               </div>
               <div className="row">
-                <div className="col-lg-2">
-                  <div className="specialist-card">
-                    <div className="selected-specialist__img">
-                      <Image alt="Фотография специалиста" />
-                    </div>
-                    <div className="selected-specialist__content">
-                      <h3>Специалист</h3>
-                      <span>Врач</span>
-                      <Button>Записаться</Button>
-                    </div>
-                  </div>
+                <div className="col-lg-3">
+                  <SpecialistCard
+                    image={""}
+                    name="Климов Илья Сергеевич"
+                    specialty="Доктор"
+                    textBtn="Записаться"
+                  />
                 </div>
-                <div className="col-lg-2">
-                  <div className="specialist-card">
-                    <div className="selected-specialist__img">
-                      <Image alt="Фотография специалиста" />
-                    </div>
-                    <div className="selected-specialist__content">
-                      <h3>Специалист</h3>
-                      <span>Врач</span>
-                      <Button>Записаться</Button>
-                    </div>
-                  </div>
+                <div className="col-lg-3">
+                  <SpecialistCard
+                    image={""}
+                    name="Климов Илья Сергеевич"
+                    specialty="Доктор"
+                    textBtn="Записаться"
+                  />
                 </div>
-                <div className="col-lg-2">
-                  <div className="specialist-card">
-                    <div className="selected-specialist__img">
-                      <Image alt="Фотография специалиста" />
-                    </div>
-                    <div className="selected-specialist__content">
-                      <h3>Специалист</h3>
-                      <span>Врач</span>
-                      <Button>Записаться</Button>
-                    </div>
-                  </div>
+                <div className="col-lg-3">
+                  <SpecialistCard
+                    image={""}
+                    name="Климов Илья Сергеевич"
+                    specialty="Доктор"
+                    textBtn="Записаться"
+                  />
+                </div>
+                <div className="col-lg-3">
+                  <SpecialistCard
+                    image={""}
+                    name="Климов Илья Сергеевич"
+                    specialty="Доктор"
+                    textBtn="Записаться"
+                  />
                 </div>
               </div>
             </div>

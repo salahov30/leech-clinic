@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-import '../Image/image.css';
+import "../Image/image.css";
 
 const Image = ({
   src,
@@ -39,17 +39,17 @@ Image.propTypes = {
   height: PropTypes.number,
   circle: PropTypes.bool,
   angle: PropTypes.bool,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 Image.defaultProps = {
-  src: '',
-  alt: 'image',
+  src: "",
+  alt: "image",
   circle: false,
   angle: false,
-  className: '',
-  width: 200,
-  height: 200,
+  className: "",
+  width: 300,
+  height: 300
 };
 
 export default Image;

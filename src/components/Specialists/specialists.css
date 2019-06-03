@@ -9,22 +9,6 @@
   line-height: 26px;
 }
 
-.specialist-card {
-  border: 1px solid #e6e6e6;
-  border-radius: 15px;
-  margin: 8px 0;
-  transition: transform .3s, box-shadow .3s, -webkit-transform .3s;
-  transition-timing-function: cubic-bezier(.25, .1, .25, 1);
-}
-
-.specialist-card:hover {
-  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, .12);
-}
-
-.specialist-card a {
-  text-decoration: none;
-}
-
 .specialist-icon {
   color: rgba(235, 77, 75, 0.5);
 }

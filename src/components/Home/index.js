@@ -1,19 +1,19 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { YMaps, Map, Placemark } from "react-yandex-maps";
+import { Link } from "react-router-dom";
 
-import Menu from '../Menu';
-import Icon from '../Icon';
+import Menu from "../Menu";
+import Icon from "../Icon";
 
-import './home.css';
+import "./home.css";
 
 const coordinates = [[54.988667, 73.376405]];
 
 const mapData = {
   center: [54.988667, 73.376405],
   zoom: 17,
-  controls: ['zoomControl', 'fullscreenControl'],
+  controls: ["zoomControl", "fullscreenControl"]
 };
 
 const Home = () => (
@@ -164,9 +164,9 @@ const Home = () => (
             <YMaps>
               <Map
                 state={mapData}
-                width={'100%'}
-                height={'550px'}
-                modules={['control.ZoomControl', 'control.FullscreenControl']}
+                width={"100%"}
+                height={"550px"}
+                modules={["control.ZoomControl", "control.FullscreenControl"]}
               >
                 {coordinates.map((coordinate, i) => (
                   <Placemark key={i} geometry={coordinate} />

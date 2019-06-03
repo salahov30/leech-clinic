@@ -21,8 +21,8 @@ aside.profile-info button {
 }
 
 aside.profile-info button:hover {
-  background-color: rgba(235, 77, 75, 0.2);
-  border: 1px solid #eb4d4b;
+  background-color: rgba(235, 77, 75, 0.3);
+
 }
 
 aside.profile-info .profile-info__image {
@@ -107,6 +107,10 @@ aside.profile-info h2 {
   padding-bottom: 15px;
 }
 
+.profile__heading h2 {
+  font-size: 35px;
+}
+
 .upload-image {
   margin-top: 25px;
   text-align: center;
@@ -138,16 +142,18 @@ aside.profile-info h2 {
   border-bottom: 1px solid #dedede;
   padding-bottom: 15px;
   margin-bottom: 15px;
+  color: #505050;
 }
 
 .profile__info h3 {
   margin-bottom: 15px;
+  font-size: 17px;
 }
 
 .profile-info__personal {
   display: block;
   padding: 5px 0;
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 100;
   font-family: 'Montserrat', sans-serif;
 

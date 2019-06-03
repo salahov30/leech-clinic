@@ -1,11 +1,10 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Helmet } from "react-helmet";
 
-import Menu from '../Menu';
-import Image from '../Image';
-import Icon from '../Icon';
-import './specialists.css';
+import Menu from "../Menu";
+import Icon from "../Icon";
+import "./specialists.css";
+import SpecialistCard from "../SpecialistCard";
 
 function Specialists() {
   return (
@@ -43,46 +42,41 @@ function Specialists() {
               </div>
             </div>
             <div className="row">
-              <div className="col-lg-4 col-sm-6">
-                <div className="specialist-card">
-                  <div className="card-header">
-                    <Image
-                      className="card-image"
-                      width={400}
-                      height={500}
-                      alt="Специалист клиники"
-                    />
-                  </div>
-                  <div className="card-content">
-                    <h3>Голиков Валерий Геннадьевич</h3>
-                    <span>Кандидат медицинских наук</span>
-                    <Link to="/">Подробнее</Link>
-                  </div>
-                </div>
+              <div className="col-lg-3">
+                <SpecialistCard
+                  image={""}
+                  name="Симоненко Алексей Юзва"
+                  specialty="Медбрат"
+                  textLink="Подробнее"
+                  linkUrl="/specialist/2"
+                />
               </div>
-              <div className="col-lg-4 col-sm-6">
-                <div className="specialist-card">
-                  <div className="card-header">
-                    <Image className="card-image" width={400} height={500} />
-                  </div>
-                  <div className="card-content">
-                    <h3>Голиков Валерий Геннадьевич</h3>
-                    <span>Врач</span>
-                    <Link to="/">Подробнее</Link>
-                  </div>
-                </div>
+              <div className="col-lg-3">
+                <SpecialistCard
+                  image={""}
+                  name="Климов Илья Сергеевич"
+                  specialty="Доктор"
+                  textLink="Подробнее"
+                  linkUrl="/specialist/2"
+                />
               </div>
-              <div className="col-lg-4 col-sm-6">
-                <div className="specialist-card">
-                  <div className="card-header">
-                    <Image className="card-image" width={400} height={500} />
-                  </div>
-                  <div className="card-content">
-                    <h3>Абдулаева Разия Хайрулаевна</h3>
-                    <span>Медсестра</span>
-                    <Link to="/">Подробнее</Link>
-                  </div>
-                </div>
+              <div className="col-lg-3">
+                <SpecialistCard
+                  image={""}
+                  name="Смирнова Анастасия Евгеньевна"
+                  specialty="Медсестра"
+                  textLink="Подробнее"
+                  linkUrl="/specialist/2"
+                />
+              </div>
+              <div className="col-lg-3">
+                <SpecialistCard
+                  image={""}
+                  name="Климов Илья Сергеевич"
+                  specialty="Доктор"
+                  textLink="Подробнее"
+                  linkUrl="/specialist/2"
+                />
               </div>
             </div>
           </div>

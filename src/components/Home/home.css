@@ -35,6 +35,10 @@
   border: none;
 }
 
+.descktop-banner a:hover {
+  background-color: #da2f2c;
+}
+
 
 .right-column {
   text-align: center;

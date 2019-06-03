@@ -1,0 +1,82 @@
+.selected-date__heading h2 {
+  font-size: 35px;
+}
+
+.selected-specialist__heading {
+  margin-bottom: 25px;
+}
+
+.selected-specialist__heading h2 {
+  font-size: 35px;
+
+}
+
+.selected-specialist__img img {
+  border-radius: 15px 15px 0 0;
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}
+
+
+.selected-specialist__img {
+  display: inline-block;
+  width: 100%;
+}
+
+.selected-specialist__content {
+  padding: 15px;
+  text-align: center;
+}
+
+.selected-specialist__content span {
+  color: rgba(235, 77, 75, 0.7);
+}
+
+.selected-specialist__content h3 {
+  margin-bottom: 10px;
+  font-size: 19px;
+}
+
+.selected-specialist__content button {
+  display: block;
+  margin: 25px auto;
+  background-color: rgba(235, 77, 75, 0.1);
+  color: #eb4d4b;
+  transition: .3s;
+}
+
+.selected-specialist__content button:hover {
+  background-color: rgba(235, 77, 75, 0.2);
+}
+
+.specialist-card {
+  border: 1px solid #e6e6e6;
+  border-radius: 15px;
+  margin: 8px 0;
+  transition: transform .3s, box-shadow .3s, -webkit-transform .3s;
+  transition-timing-function: cubic-bezier(.25, .1, .25, 1);
+}
+
+.specialist-card:hover {
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, .12);
+}
+
+.specialist-card a {
+  text-decoration: none;
+}
+
+.card-btn a {
+  display: inline-block;
+  margin: 25px 0;
+  padding: 15px 25px;
+  border-radius: 5px;
+  background-color: rgba(235, 77, 75, 0.1);
+  color: #eb4d4b;
+  font-weight: 300;
+  transition: .3s;
+}
+
+.card-btn a:hover {
+  background-color: rgba(235, 77, 75, 0.2);
+}
