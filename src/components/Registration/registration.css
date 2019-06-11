@@ -62,10 +62,6 @@
   margin-top: 150px;
 }
 
-.inputWrapper {
-  margin: 25px 0;
-}
-
 @media (min-width: 320px) and (max-width: 768px) {
   .auth-wrapper h1 {
     text-align: center;

@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import InputMask from "react-input-mask";
 
-import './input.css';
+import "./input.css";
 
 const Input = ({ id, className, label, error, ...attrs }) => {
-  const classes = classNames('input', className, { error });
+  const classes = classNames("input", className, { error });
 
   return (
     <div className="inputWrapper">
@@ -19,7 +20,7 @@ const Input = ({ id, className, label, error, ...attrs }) => {
           <span className="inputRequired">Заполните поле</span>
         )}
       </div>
-      <input name={id} id={id} className={classes} {...attrs} />
+      <InputMask name={id} id={id} className={classes} {...attrs} />
       {error && <span className="inputError">{error}</span>}
     </div>
   );
@@ -29,13 +30,13 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   className: PropTypes.string,
   label: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.string
 };
 
 Input.defaultProps = {
-  className: '',
-  label: '',
-  error: '',
+  className: "",
+  label: "",
+  error: ""
 };
 
 export default Input;

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Toolbar from './Toolbar/Toolbar';
-import SideDrawer from './SideDrawer/SideDrawer';
-import Backdrop from './Backdrop/Backdrop';
+import Toolbar from "./Toolbar/Toolbar";
+import SideDrawer from "./SideDrawer/SideDrawer";
+import Backdrop from "./Backdrop/Backdrop";
 
 class Menu extends Component {
   state = {
@@ -26,7 +26,7 @@ class Menu extends Component {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
     return (
-      <header>
+      <header className="menu-header">
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}

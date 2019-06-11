@@ -56,7 +56,7 @@ export class Registration extends Component {
       password: this.state.password
     };
     axios
-      .post("http://localhost:5000/api/user/register", User)
+      .put("http://localhost:5000/api/user/register", User)
       .then(res => {
         this.props.history.push("/login");
         if (this._isMounted) {
@@ -67,7 +67,8 @@ export class Registration extends Component {
       })
       .catch(err => {
         this.setState({
-          error: err
+          error: err,
+          isLoaded: false
         });
       });
   };
@@ -78,6 +79,7 @@ export class Registration extends Component {
 
   render() {
     const { error, isLoaded } = this.state;
+
     return (
       <>
         <Helmet>
@@ -118,6 +120,7 @@ export class Registration extends Component {
                     id="phone"
                     label="Телефон"
                     type="phone"
+                    mask="+7 (999) 999-99-99"
                     placeholder="Введите номер телефона"
                     onChange={this.handlePhoneChange}
                     required

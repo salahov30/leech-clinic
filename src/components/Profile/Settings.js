@@ -1,25 +1,27 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 
-import Input from '../Input';
-import Button from '../Button';
-import Image from '../Image';
-import Preloader from '../Preloader';
+import Input from "../Input";
+import Button from "../Button";
+import Image from "../Image";
+import Preloader from "../Preloader";
 
 class Settings extends Component {
   state = {
-    file: '',
-    imagePreviewUrl: '',
-    name: '',
-    city: '',
-    surname: '',
-    middlename: '',
-    isLoaded: false,
+    file: "",
+    imagePreviewUrl: "",
+    name: "",
+    city: "",
+    surname: "",
+    middlename: "",
+    date: "",
+    isLoaded: false
   };
 
   handleInputChange = ({ target }) => {
     this.setState({
-      [target.name]: target.value,
+      [target.name]: target.value
     });
   };
 
@@ -32,7 +34,7 @@ class Settings extends Component {
     reader.onloadend = () => {
       this.setState({
         file: file,
-        imagePreviewUrl: reader.result,
+        imagePreviewUrl: reader.result
       });
     };
 
@@ -49,22 +51,23 @@ class Settings extends Component {
       middlename: this.state.middlename,
       surname: this.state.surname,
       city: this.state.city,
-      date: this.state.date,
+      date: this.state.date
     };
 
     axios
-      .post('http://localhost:5000/api/user/update', User)
+      .post("http://localhost:5000/api/user/update", User)
       .then(() => {
-        this.props.history.push('/profile');
+        this.props.history.push("/profile");
       })
       .catch(err => {
+        console.log(err);
         this.setState({
-          error: err.request.response,
+          error: err
         });
       });
 
     this.setState({
-      isLoaded: true,
+      isLoaded: true
     });
   };
 
@@ -90,7 +93,7 @@ class Settings extends Component {
         <div className="profile-settings__form">
           <form method="post">
             <h3>Персональные данные</h3>
-            <span className="error">{error ? 'Заполните все поля' : ''}</span>
+            <span className="error">{error ? "Заполните все поля" : ""}</span>
             <div className="row">
               <div className="col-lg-2">
                 <div className="upload-image">
@@ -157,6 +160,7 @@ class Settings extends Component {
                   id="phone"
                   label="Телефон"
                   type="text"
+                  mask="+7 (999) 999-99-99"
                   placeholder="Введите свой телефон"
                   onChange={this.handleInputChange}
                 />
@@ -174,4 +178,4 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+export default withRouter(Settings);

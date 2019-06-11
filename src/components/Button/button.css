@@ -25,6 +25,18 @@
   box-shadow: inset 3px 3px 10px #000;
 }
 
-.secondary {
-  width: 1000px;
+.secondary-btn {
+  display: inline-block;
+  padding: 15px 25px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid #034a9a;
+  color: #034a9a;
+  font-weight: 600;
+  transition: .3s;
+  text-decoration: none;
+}
+
+.secondary-btn:hover {
+  background-color: rgba(65, 152, 251, 0.27);
 }

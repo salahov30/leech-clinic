@@ -1,9 +1,10 @@
 .profile {
   margin: 45px 0;
+  padding: 0;
 }
 
 aside.profile-info {
-  background-color: #f1f1f1;
+  background-color: #dbdcec;
   padding: 25px 30px;
   text-align: center;
   border-radius: 10px;
@@ -15,13 +16,13 @@ aside.profile-info button {
   margin: 25px 0;
   padding: 15px 25px;
   border-radius: 5px;
-  background-color: rgba(235, 77, 75, 0.2);
-  color: #eb4d4b;
+  background-color: #eb4d4b;
+  color: #fff;
   transition: .3s;
 }
 
 aside.profile-info button:hover {
-  background-color: rgba(235, 77, 75, 0.3);
+  background-color: #c73f3d;
 
 }
 
@@ -29,10 +30,9 @@ aside.profile-info .profile-info__image {
   margin-bottom: 25px;
 }
 
-aside.profile-info h2 {
-  color: #2c3e50;
+aside.profile-info h3 {
   margin-bottom: 15px;
-  font-weight: 300;
+  font-weight: 900;
 }
 
 .aside-menu {
@@ -96,14 +96,14 @@ aside.profile-info h2 {
 .profile-content {
   margin: 50px 0;
   padding: 25px;
-  background-color: #f1f1f1;
+  background-color: #dbdcec;
   border-radius: 15px;
 }
 
 .profile__heading {
   margin-bottom: 25px;
   text-align: center;
-  border-bottom: 1px solid #dedede;
+  border-bottom: 1px solid #c2c3d0;
   padding-bottom: 15px;
 }
 
@@ -139,7 +139,7 @@ aside.profile-info h2 {
 }
 
 .profile__info {
-  border-bottom: 1px solid #dedede;
+  border-bottom: 1px solid#c2c3d0;
   padding-bottom: 15px;
   margin-bottom: 15px;
   color: #505050;
@@ -177,4 +177,68 @@ aside.profile-info h2 {
 
 .city {
   text-align: right;
+}
+
+.events-header {
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  font-size: 19px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr;
+  grid-gap: 40px;
+}
+
+.events-header li {
+  list-style-type: none;
+}
+
+.event-list {
+  padding: 0;
+  margin-right: 15px;
+  margin: 0;
+}
+
+.events-item {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr;
+  grid-gap: 40px;
+}
+
+.events-item li {
+  list-style-type: none;
+  align-self: center;
+}
+
+
+
+.profile-info__btn-edit {
+  background-color: transparent;
+  color: #686de0;
+  padding: 0;
+  margin: 15px 0;
+  padding: 5px;
+  border-radius: 0;
+}
+
+.profile-info__btn-edit:hover {
+  background-color: transparent;
+  text-decoration: underline;
+  color: #3d42af;
+}
+
+.profile__info-empty {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 70px 0;
+  color: #b0b1bf;
+}
+
+.profile__info-empty p {
+  display: block;
+  font-size: 20px;
+  margin-top: 25px;
 }

@@ -1,53 +1,96 @@
-.descktop-banner {
-  position: relative;
-  background: #8E2DE2;
-  background: -webkit-linear-gradient(to left, #4A00E0, #8E2DE2);
-  background: linear-gradient(to left, #4A00E0, #8E2DE2);
-  padding: 40px;
-  color: #fff;
-  border-radius: 15px;
-  box-shadow: 5px 5px 3px red;
-  height: 300px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+.descktop-banner-wrapper {
+  background-color: rgba(24, 144, 195, 0.1);
 }
 
-.descktop-banner h1 {
-  font-size: 45px;
-  margin: 0;
-  padding: 0;
-  color: #fff;
+.left-column h1 {
+  font-size: 35px;
+  color: #034a9a;
+  text-transform: uppercase;
+  margin-bottom: 35px;
 }
 
-.descktop-banner p {
-  font-weight: 300;
+.left-column p {
+  color: #4a4f56;
+  margin-bottom: 35px;
+  line-height: 30px;
 }
 
-.descktop-banner a {
-  position: absolute;
-  bottom: 40px;
-  background-color: #eb4d4b;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 300;
-  font-size: 18px;
-  padding: 15px 25px;
-  border-radius: 5px;
-  border: none;
+.wrapper {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  grid-gap: 2rem;
 }
 
-.descktop-banner a:hover {
-  background-color: #da2f2c;
+.left-column {
+  padding: 35px 0;
 }
-
 
 .right-column {
-  text-align: center;
+  background: linear-gradient(rgba(45, 90, 238, 0.71), rgba(45, 185, 238, 0.61)), url('./main-cover-1.jpg');
+  background-size: cover;
+  padding: 35px 60px;
+  border-radius: 15px;
+}
+
+
+.right-column h2 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.right-column p {
+  color: #fff;
+  font-size: 17px;
+  line-height: 30px;
+}
+
+.right-column a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 900;
+  font-size: 20px;
+  display: inline-block;
+  margin-top: 35px;
+  transition: .3s;
+}
+
+.right-column a:hover {
+  color: #034a9a;
+}
+
+.right-column i {
+  margin-left: 10px;
+}
+
+
+.about-heading {
+  display: grid;
+  grid-template-columns: 1.3fr 2.5fr;
+  grid-gap: 6rem;
+}
+
+.about-heading .about-description {
+  color: #71767d;
+  font-size: 15px;
 }
 
 .about-content h2 {
-  font-size: 35px;
-  font-weight: 900;
+  font-size: 23px;
+  font-weight: 600;
+  text-transform: uppercase;
   margin: 0 0 25px;
+  color: #004fa8;
+  font-weight: 600;
+}
+
+.about-heading span {
+  display: block;
+  font-size: 27px;
+  color: #0076b3;
+  margin-top: 10px;
+  font-weight: 900;
 }
 
 .about-content h3 {
@@ -63,54 +106,110 @@
   margin: 0;
 }
 
-.about-image {
-  height: 100%;
-  display: flex;
-  justify-content: center;
+section.advantages-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px;
+  padding: 35px 0;
+}
+
+article.adventages-card {
+  background-color: rgba(24, 144, 195, 0.1);
+  display: inline-block;
+  border-radius: 15px;
+  margin-top: 35px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+article.adventages-card header {
+  text-align: center;
+}
+
+.image-wrapper {
+  background-color: #fff;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 15px;
+  position: relative;
+  transform: translateY(-50%)
+}
+
+.adventages-card__heading img {
+  display: inline-block;
+  padding: 15px;
+}
+
+.adventages-card__heading h3 {
+  font-size: 20px;
+  color: #224eb6;
+}
+
+.card-list__section {
+  padding: 0 35px 25px;
+}
+
+ul.card-list {
+  padding: 0 15px;
+  margin: 0;
+  line-height: 45px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+ul.card-list li {
+  color: #009de0;
+}
+
+ul.card-list span {
+  color: #3c4e67;
+  font-weight: 300;
+}
+
+.call-to-action--wrapper {
+  background-color: #034a9a;
+  background: linear-gradient(rgba(45, 90, 238, 0.88),
+    rgba(45, 90, 238, 0.88)), url('./main-cover.jpg') no-repeat;
+  background-size: cover;
+}
+
+.call-to-action__banner {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-items: center;
   align-items: center;
 }
 
-.about-image i {
-  vertical-align: middle;
-  color: #686de0;
+.call-to-action__text h3 {
+  color: #fff;
+  font-size: 35px;
+  display: inline-block;
+  margin-bottom: 15px;
 }
 
-.about-icons {
-  margin-right: 15px;
-  color: #686de0;
+.call-to-action__text p {
+  color: #ffff;
+  font-weight: 600;
 }
 
-.advantages-list {
-  margin-top: 70px;
-}
-
-.advantages-list i {
-  vertical-align: middle;
-}
-
-.advantages-list ul {
-  margin: 0;
-  padding: 0;
+.call-to-action__banner a {
+  color: #034a9a;
+  background-color: #fff;
+  text-decoration: none;
   font-size: 17px;
-  color: #575c63;
+  padding: 15px 25px;
+  border-radius: 5px;
+  transition: .3s;
 }
 
-.advantages-list li {
-  margin-bottom: 35px;
-  list-style-type: none;
-}
-
-.main-content {
-  margin-bottom: 45px;
+.call-to-action__banner a:hover {
+  background-color: #034a9a;
+  color: #fff;
 }
 
 .section-location-wrapper h2 {
-  font-size: 35px;
+  font-size: 27px;
   margin-bottom: 25px;
-}
-
-.main-content p {
-  margin-bottom: 15px;
+  color: #034a9a;
 }
 
 .section-location-wrapper ul {
@@ -131,32 +230,86 @@
 }
 
 .section-location-wrapper ul li a:hover {
-  color: #686de0;
+  color: #034a9a;
 }
 
 .location-icons {
-  color: #686de0;
+  color: #034a9a;
   margin-right: 15px;
 }
 
+@media (max-width: 1024px) and (min-width: 320px) {
+  section.advantages-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr
+  }
+}
+
 @media (min-width: 320px) and (max-width: 768px) {
-  .descktop-banner {
-    padding: 20px;
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .about-heading {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  section.advantages-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .right-column {
+    padding: 23px;
+    background-position: 36%;
+  }
+
+  .left-column {
+    padding: 0;
+  }
+
+  .left-column p {
+    margin-bottom: 20px;
   }
 
   .left-column h1 {
-    font-size: 36px;
+    font-size: 24px;
   }
 
-  .section-location-wrapper h2 {
-    font-size: 34px;
+  .about-heading {
+    margin-top: 35px;
+    grid-gap: 25px;
   }
 
   .about-content h2 {
-    font-size: 34px;
+    margin-bottom: 0;
   }
 
-  .section-location-wrapper ul {
-    margin-top: 25px;
+  .call-to-action__banner {
+    display: grid;
+    grid-gap: 35px;
+    grid-template-columns: 1fr;
+    padding: 45px 0
   }
+
+  .call-to-action__text h3 {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+
+  .call-to-action__text p {
+    text-align: center;
+  }
+
+  .section-location-wrapper {
+    margin-top: 35px;
+  }
+
+  .descktop-banner-wrapper {
+    padding: 35px 15px;
+  }
+
 }

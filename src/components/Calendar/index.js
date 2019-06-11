@@ -1,9 +1,9 @@
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
-import * as calendar from './calendar';
+import * as calendar from "./calendar";
 
-import './calendar.css';
+import "./calendar.css";
 
 class Calendar extends React.Component {
   static defaultProps = {
@@ -27,30 +27,30 @@ class Calendar extends React.Component {
       2028,
       2029,
       2030,
-      2031,
+      2031
     ],
     month: [
-      'Январь',
-      'Февраль',
-      'Март',
-      'Апрель',
-      'Май',
-      'Июнь',
-      'Июль',
-      'Август',
-      'Сентябрь',
-      'Октябрь',
-      'Ноябрь',
-      'Декабрь',
+      "Январь",
+      "Февраль",
+      "Март",
+      "Апрель",
+      "Май",
+      "Июнь",
+      "Июль",
+      "Август",
+      "Сентябрь",
+      "Октябрь",
+      "Ноябрь",
+      "Декабрь"
     ],
-    weekDay: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
-    onChange: Function.prototype,
+    weekDay: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+    onChange: Function.prototype
   };
 
   state = {
     date: this.props.date,
     currentDate: new Date(),
-    selectDate: null,
+    selectDate: null
   };
 
   get year() {
@@ -92,6 +92,8 @@ class Calendar extends React.Component {
     this.props.onChange(date);
   };
 
+  onClick = () => {};
+
   render() {
     const { years, month, weekDay } = this.props;
     const { currentDate, selectDate } = this.state;
@@ -102,7 +104,7 @@ class Calendar extends React.Component {
       <div className="calendar-container">
         <div className="calendar">
           <div className="calendar-control">
-            <button onClick={this.handlePrevMouthButtonClick}>{'<'}</button>
+            <button onClick={this.handlePrevMouthButtonClick}>{"<"}</button>
 
             <select
               onChange={this.handleSelectChange}
@@ -128,7 +130,7 @@ class Calendar extends React.Component {
               ))}
             </select>
 
-            <button onClick={this.handleNextMouthButtonClick}>{'>'}</button>
+            <button onClick={this.handleNextMouthButtonClick}>{">"}</button>
           </div>
 
           <div className="calendar-grid-container">
@@ -148,16 +150,24 @@ class Calendar extends React.Component {
                         <td
                           key={index}
                           onClick={() => this.handleDayClick(date)}
-                          className={classnames('day', {
+                          className={classnames("day", {
                             today: calendar.areEqual(date, currentDate),
-                            selected: calendar.areEqual(date, selectDate),
+                            selected: calendar.areEqual(date, selectDate)
                           })}
                         >
-                          {date.getDate()}
+                          <button
+                            className="calendar-btn"
+                            onClick={e => {
+                              e.preventDefault();
+                              this.props.updateData(this.state.selectDate);
+                            }}
+                          >
+                            {date.getDate()}
+                          </button>
                         </td>
                       ) : (
                         <td key={index} />
-                      ),
+                      )
                     )}
                   </tr>
                 ))}

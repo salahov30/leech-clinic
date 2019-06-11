@@ -1,5 +1,5 @@
-header {
-  background: #686de0;
+header.menu-header {
+  background: #034a9a;
 }
 
 .toolbar {
@@ -19,7 +19,8 @@ header {
 
 .toolbar__logo {
   margin-left: 1rem;
-  font-family: 'Sofia', cursive;
+  font-family: 'Monserat', sans-serif;
+
 }
 
 .toolbar__logo a {
@@ -28,20 +29,34 @@ header {
   font-size: 1.3rem;
 }
 
+.toolbar__logo span {
+  margin-left: 15px;
+}
+
+.toolbar__logo img {
+  vertical-align: middle;
+}
+
 .spacer {
   flex: 1;
 }
 
+.toolbar_navigation-items {
+  height: 100%;
+}
+
 .toolbar_navigation-items ul {
+  height: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  ;
+  align-items: center;
+
 }
 
 .toolbar_navigation-items li {
-  position: relative;
+  height: 100%;
   font-family: 'Graphik', sans-serif;
   font-weight: 600;
   font-size: 13px;
@@ -49,13 +64,17 @@ header {
 
 .toolbar_navigation-items a {
   color: white;
+  height: 100%;
   text-decoration: none;
-  padding: 24px 20px 21px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
   opacity: .8;
 }
 
 
 .toolbar_navigation-items a.active {
+  position: relative;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 1;
@@ -68,7 +87,8 @@ header {
   height: 3px;
   background-color: #eb4d4b;
   position: absolute;
-  bottom: -23px;
+  bottom: 0;
+  left: 0;
 }
 
 .toolbar_navigation-items a:hover,

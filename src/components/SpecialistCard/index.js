@@ -7,27 +7,49 @@ import Button from "../Button";
 import "./specialistCard.css";
 
 const SpecialistCard = props => {
-  const { image, name, specialty, textBtn, onClick, textLink, linkUrl } = props;
+  const {
+    image,
+    name,
+    speciality,
+    textBtn,
+    onClick,
+    textLink,
+    linkUrl
+  } = props;
   return (
-    <div>
+    <>
       <div className="specialist-card">
         <div className="selected-specialist__img">
-          <Image src={image} alt="Фотография специалиста" />
+          <Image
+            width={270}
+            height={390}
+            src={image}
+            alt="Фотография специалиста"
+          />
         </div>
         <div className="selected-specialist__content">
           <h3>{name}</h3>
-          <span>{specialty}</span>
+          <span>{speciality}</span>
           <div className="card-btn">
             {textBtn ? (
-              <Button onClick={onClick}>{textBtn}</Button>
+              <Button className="secondary-btn" onClick={onClick}>
+                {textBtn}
+              </Button>
             ) : (
-              <Link to={`${linkUrl}`}>{textLink}</Link>
+              <Link className="secondary-btn" to={`${linkUrl}`}>
+                {textLink}
+              </Link>
             )}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
+};
+
+SpecialistCard.defaultProps = {
+  name: "ФИО",
+  speciality: "Специльность"
 };
 
 export default SpecialistCard;

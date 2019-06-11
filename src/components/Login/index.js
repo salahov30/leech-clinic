@@ -61,7 +61,8 @@ class Login extends Component {
       })
       .catch(err => {
         this.setState({
-          error: err
+          error: err,
+          isLoaded: false
         });
       });
   };
@@ -102,6 +103,7 @@ class Login extends Component {
                     type="phone"
                     placeholder="Введите номер телефона"
                     onChange={this.handleInputChange}
+                    mask="+7 (999) 999-99-99"
                     required
                   />
                   <Input

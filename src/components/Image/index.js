@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import "../Image/image.css";
+import placeholder from "../Image/photo.png";
 
 const Image = ({
   src,
@@ -17,7 +18,7 @@ const Image = ({
   const classes = classNames(className, { circle, angle });
 
   if (!src) {
-    src = `https://via.placeholder.com/${width}x${height}?text=Placeholder`;
+    src = `${placeholder}`;
   }
 
   return (

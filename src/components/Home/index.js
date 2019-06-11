@@ -4,6 +4,7 @@ import { YMaps, Map, Placemark } from "react-yandex-maps";
 import { Link } from "react-router-dom";
 
 import Menu from "../Menu";
+import Imgae from "../Image";
 import Icon from "../Icon";
 
 import "./home.css";
@@ -23,120 +24,209 @@ const Home = () => (
     </Helmet>
     <Menu />
     <main>
-      <section className="descktop-banner-wrapper">
+      <section
+        aria-label="Представление клиники"
+        className="descktop-banner-wrapper"
+      >
         <div className="container">
-          <div className="descktop-banner">
+          <div className="wrapper">
             <div className="left-column">
-              <h1>Записаться на прием</h1>
-              <p>Запишитесь на прием не выходя из дома</p>
-              <Link to="/appointment">Записаться</Link>
+              <h1>Каждый достоин лучшего</h1>
+              <p>
+                <strong>Leech clinic</strong> - отвечает самым взыскательным
+                требованиям. Прием ведут высококвалифицированные специалисты,
+                находится в самом сердце города, оказывает широкий спектр
+                медицинской помощи по доступным ценам и, что важно,оснащен
+                новейшим оборудованием.
+              </p>
+              <Link className="secondary-btn " to="/about">
+                О клинике
+              </Link>
+            </div>
+            <div className="right-column">
+              <h2>Cпециалисты </h2>
+              <p>
+                От профессионализма и квалификации сотрудников клиники зависит
+                качество оказания услуг. Клиника “Leech clinic” постоянно
+                повышает квалификацию своего персонала, отправляя сотрудников в
+                города, где более развиты данные виды медицины.
+              </p>
+              <a
+                href="https://www.youtube.com/watch?v=pYlsAH8C5bY"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Посмотреть видео
+                <Icon name="far fa-play-circle" />
+              </a>
             </div>
           </div>
         </div>
       </section>
-      <section className="section-about-wrapper">
+      <section
+        aria-label="Краткое описание клиники"
+        className="section-about-wrapper"
+      >
         <div className="container">
-          <div className="about">
-            <div className="about-content">
-              <h2>О нас</h2>
-              <div className="main-content">
-                <div className="row">
-                  <div className="col-lg-7">
-                    <p>
-                      Клиника “Leech clinic” была открыта в 2006 году. За этот
-                      значительный промежуток времени в нашей клинике
-                      сформировался опытный, высококвалифицированный коллектив,
-                      состоящий из врачей, готовых каждый день оказывать помощь
-                      пациентам в решении их проблем, связанных со здоровьем и
-                      красотой тела.
-                    </p>
-                    <p>
-                      В клинике “Leech clinic” приемлемые цены за
-                      предоставляемые услуги. Это позволяет компании
-                      поддерживать свою популярность клиники среди пациентов.
-                      Для всех пациентов предоставляются те услуги, которые они
-                      выбрали, и все пациенты обслуживаются независимо от
-                      статуса и положения.
-                    </p>
-                    <p>
-                      Среди многообразия современных медицинских услуг непросто
-                      найти клинику, в которой пациента устраивало бы все,
-                      начиная от качества медицинского обслуживания, цены на
-                      услуги и заканчивая транспортной доступностью.
-                    </p>
+          <article
+            aria-label="Краткое описание клиники"
+            className="about-content"
+          >
+            <header className="about-heading">
+              <h2>
+                О клинике<span>Принципы работы</span>
+              </h2>
+              <p className="about-description">
+                Клиника “Leech clinic” – это сочетание ряда преимуществ, которые
+                позволяют обеспечить высококвалифицированную медицинскую помощь.
+                Во всем, что касается Вашего здоровья, - медицинский персонал,
+                оснащение, технологии, сервис – мы ориентируемся на лучшее.
+              </p>
+            </header>
+            <section
+              aria-label="Список преимуществ"
+              className="advantages-list"
+            >
+              <article
+                aria-label="Карточка преимущества"
+                className="adventages-card"
+              >
+                <header className="adventages-card__heading">
+                  <div className="image-wrapper">
+                    <Imgae
+                      src={process.env.PUBLIC_URL + "/image/med-list.png"}
+                      width={100}
+                      height={100}
+                    />
                   </div>
-                  <div className="col-lg-5">
-                    <div className="about-image">
-                      <Icon size={20} name="fas fa-info-circle" />
-                    </div>
+                  <h3>С чем мы можем помочь</h3>
+                </header>
+                <section
+                  aria-label="Список проблем, с которыми клиника может помочь"
+                  className="card-list__section"
+                >
+                  <ul className="card-list">
+                    <li>
+                      <span>Проблемы с сердцем</span>
+                    </li>
+                    <li>
+                      <span>Заболевания ЖК</span>
+                    </li>
+                    <li>
+                      <span>Неврологические проблемы</span>
+                    </li>
+                    <li>
+                      <span>Урологические заболевания</span>
+                    </li>
+                    <li>
+                      <span>Болезни дыхательной системы</span>
+                    </li>
+                    <li>
+                      <span>Гинекологические проблемы</span>
+                    </li>
+                    <li>
+                      <span>Заболевания кожи, среди которых</span>
+                    </li>
+                    <li>
+                      <span>Эндокринологические проблемы</span>
+                    </li>
+                  </ul>
+                </section>
+              </article>
+              <article
+                aria-label="Карточка оборудования"
+                className="adventages-card"
+              >
+                <header className="adventages-card__heading">
+                  <div className="image-wrapper">
+                    <Imgae
+                      src={process.env.PUBLIC_URL + "/image/doctor.png"}
+                      width={100}
+                      height={100}
+                    />
                   </div>
-                </div>
-              </div>
-              <div className="advantages-list">
-                <div className="row">
-                  <div className="col-lg-6">
-                    <ul>
-                      <li>
-                        <Icon
-                          size={2}
-                          name="fas fa-user-md"
-                          className="about-icons"
-                        />
-                        Квалифицированные врачи
-                      </li>
-                      <li>
-                        <Icon
-                          size={2}
-                          name="fas fa-bed"
-                          className="about-icons"
-                        />
-                        Комфортные комнаты отдыха
-                      </li>
-                      <li>
-                        <Icon
-                          size={2}
-                          name="fas fa-bus-alt"
-                          className="about-icons"
-                        />
-                        Удобное расположение клиники
-                      </li>
-                      <li>
-                        <Icon
-                          size={2}
-                          name="fas fa-american-sign-language-interpreting"
-                          className="about-icons"
-                        />
-                        Доступно всем категориям граждан
-                      </li>
-                    </ul>
+                  <h3>Наше оборудование</h3>
+                </header>
+                <section
+                  aria-label="Оборудование в клинике"
+                  className="card-list__section"
+                >
+                  <ul className="card-list">
+                    <li>
+                      <span>Проблемы с сердцем</span>
+                    </li>
+                    <li>
+                      <span>Заболевания ЖК</span>
+                    </li>
+                    <li>
+                      <span>Неврологические проблемы</span>
+                    </li>
+                    <li>
+                      <span>Урологические заболевания</span>
+                    </li>
+                    <li>
+                      <span>Болезни дыхательной системы</span>
+                    </li>
+                  </ul>
+                </section>
+              </article>
+              <article
+                aria-label="Карточка условий прибывания"
+                className="adventages-card"
+              >
+                <header className="adventages-card__heading">
+                  <div className="image-wrapper">
+                    <Imgae
+                      src={process.env.PUBLIC_URL + "/image/room.png"}
+                      width={100}
+                      height={100}
+                      alt="Иконка. Крвоать в больнице"
+                    />
                   </div>
-                  <div className="col-lg-6">
-                    <ul>
-                      <li>
-                        <Icon
-                          size={2}
-                          name="far fa-comment-dots"
-                          className="about-icons"
-                        />
-                        Отзывчивая администрация
-                      </li>
-                      <li>
-                        <Icon
-                          size={2}
-                          name="fas fa-baby"
-                          className="about-icons"
-                        />
-                        Наличие детских комнат
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <h3>Условия прибывания</h3>
+                </header>
+                <section
+                  aria-label="Список условий прибывания"
+                  className="card-list__section"
+                >
+                  <ul className="card-list">
+                    <li>
+                      <span>Проблемы с сердцем</span>
+                    </li>
+                    <li>
+                      <span>Заболевания ЖК</span>
+                    </li>
+                    <li>
+                      <span>Неврологические проблемы</span>
+                    </li>
+                  </ul>
+                </section>
+              </article>
+            </section>
+          </article>
         </div>
       </section>
-      <section className="section-location-wrapper">
+      <section
+        aria-label="Предложение записаться на прием"
+        className="call-to-action--wrapper"
+      >
+        <div className="container">
+          <article
+            aria-label="Предложение записаться на прием"
+            className="call-to-action__banner"
+          >
+            <div className="call-to-action__text">
+              <h3>Запишитесь на прием</h3>
+              <p>Зарегистрируйтесь на прием не выходя из дома</p>
+            </div>
+            <Link to="/appointment">Записаться</Link>
+          </article>
+        </div>
+      </section>
+      <section
+        aria-label="Контактные данные"
+        className="section-location-wrapper"
+      >
         <div className="container">
           <h2>Как нас найти</h2>
           <ul>

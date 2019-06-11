@@ -1,0 +1,163 @@
+header.specialists-header h2 {
+  grid-area: header;
+  font-size: 30px;
+  text-transform: none;
+  margin-bottom: 25px;
+}
+
+section.specialist-section {
+  padding: 0px 0 75px;
+}
+
+ul.dashboard-specialist-list {
+  background-color: #fff;
+  padding: 45px;
+  border-radius: 15px;
+  justify-content: flex-start;
+  display: inline-flex;
+  box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, .1),
+    0 0.25rem 0.5rem rgba(90, 97, 105, .12),
+    0 0.9375rem 1.375rem rgba(90, 97, 105, .1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, .1)
+}
+
+ul.tile-list li.tile-list__item h3 {
+  font-size: 19px;
+  word-break: break-word;
+}
+
+ul.tile-list.dashboard-specialist-list .dasboard-specialists {
+  margin-top: 25px;
+}
+
+ul.tile-list li.tile-list__item span.dasboard-specialists-info {
+  display: block;
+  color: var(--text);
+  padding: 10px 0;
+}
+
+ul.tile-list li.tile-list__item span.dasboard-specialists-info span.dashboard-waring {
+  color: #f39c12;
+}
+
+ul.tile-list li.tile-list__item span.dasboard-specialists-info span.dashboard-error {
+  color: #e74c3c;
+}
+
+ul.tile-list li.tile-list__item span.dasboard-specialists-info span.dashboard-approved {
+  color: #2ecc71;
+}
+
+section.specialist-section.section-add-specialist {
+  display: grid;
+  grid-template-areas: 'form''card';
+  grid-template-columns: 0.7fr 273px;
+  grid-row-gap: 15px;
+  grid-column-gap: 50px;
+}
+
+.specicalist-card__form-add {
+  grid-area: card;
+}
+
+span.section-add-specialist__callback {
+  grid-area: callback;
+}
+
+form.specialist-from {
+  grid-area: form;
+  display: grid;
+  grid-column: 1;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 15px;
+  background-color: #fff;
+  padding: 45px;
+  border-radius: 15px;
+  box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, .1),
+    0 0.25rem 0.5rem rgba(90, 97, 105, .12),
+    0 0.9375rem 1.375rem rgba(90, 97, 105, .1),
+    0 0.4375rem 2.1875rem rgba(165, 182, 201, .1)
+}
+
+.tile-list__button {
+  background-color: transparent;
+}
+
+.tile-list__button:hover {
+  background-color: transparent;
+}
+
+.section-edit {
+  display: none;
+  grid-template-columns: .7fr 271px;
+  grid-gap: 25px;
+  grid-template-areas: 'header header''form card'
+}
+
+.specialist-card-wrapper__edit {
+  grid-area: card;
+}
+
+@media (min-width: 1024px) and (max-width: 1320px) {
+  section.specialist-section.section-add-specialist {
+    display: grid;
+    grid-template-columns: 271px 1fr;
+
+  }
+
+  section.specialist-section form.specialist-from {
+    grid-column: 1/3
+  }
+
+  section.specialist-section.section-add-specialist .specialist-card-wrapper {
+    grid-column: 1
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  section.specialist-section.section-add-specialist {
+    display: grid;
+    grid-template-columns: 271px 1fr;
+    grid-column: 1/3;
+
+  }
+
+  section.specialist-section form.specialist-from {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column: 1/3;
+  }
+
+  section.specialist-section.section-add-specialist .specialist-card-wrapper {
+    grid-column: 1;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 765px) {
+  section.dashboard-section {
+    padding: 60px 10px;
+  }
+
+  section.specialist-section.section-add-specialist {
+    display: grid;
+    grid-template-columns: 271px;
+    grid-column: 1/3;
+
+  }
+
+  section.specialist-section form.specialist-from {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column: 1/3;
+  }
+
+  section.specialist-section.section-add-specialist .specialist-card-wrapper {
+    grid-column: 1;
+  }
+
+  ul.dashboard-specialist-list {
+    padding: 35px 0;
+    display: flex;
+    justify-content: center;
+  }
+}

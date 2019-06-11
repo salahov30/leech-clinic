@@ -1,58 +1,58 @@
-import React, { Component } from 'react';
-import { getJwt } from '../../helpers/jwt';
+import React, { Component } from "react";
+import { getJwt } from "../../helpers/jwt";
 import {
   BrowserRouter as Router,
   withRouter,
   Route,
-  Link,
-} from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import axios from 'axios';
+  Link
+} from "react-router-dom";
+import { Helmet } from "react-helmet";
+import axios from "axios";
 
-import Menu from '../Menu';
-import Image from '../Image';
-import Button from '../Button';
-import Settings from './Settings';
-import Personal from './PersonalInfo';
-import MedicalCard from './MedicalCard';
-import Events from './Events';
-import Preloader from '../Preloader';
-import './profile.css';
+import Menu from "../Menu";
+import Image from "../Image";
+import Button from "../Button";
+import Settings from "./Settings";
+import Personal from "./PersonalInfo";
+import MedicalCard from "./MedicalCard";
+import Events from "./Events";
+import Preloader from "../Preloader";
+import "./profile.css";
 
 class Profile extends Component {
   state = {
-    user: '',
-    error: '',
+    user: "",
+    error: ""
   };
 
   componentDidMount() {
     const jwt = getJwt();
     if (!jwt) {
-      this.props.history.push('/login');
+      this.props.history.push("/login");
     }
 
     axios({
-      method: 'GET',
-      url: 'http://localhost:5000/api/user/',
-      mode: 'cors',
-      headers: { 'auth-token': `${jwt}`, 'Access-Control-Allow-Origin': true },
+      method: "GET",
+      url: "http://localhost:5000/api/user",
+      mode: "cors",
+      headers: { "auth-token": `${jwt}`, "Access-Control-Allow-Origin": true }
     })
       .then(res => {
         this.setState({
-          user: res.data,
+          user: res.data
         });
       })
       .catch(err => {
-        localStorage.removeItem('auth-token');
-        this.props.history.push('/login');
+        localStorage.removeItem("auth-token");
+        this.props.history.push("/login");
         console.log(err);
       });
   }
 
   onLogOut = e => {
     e.preventDefault();
-    localStorage.removeItem('auth-token');
-    this.props.history.push('/login');
+    localStorage.removeItem("auth-token");
+    this.props.history.push("/login");
   };
 
   render() {
@@ -83,17 +83,15 @@ class Profile extends Component {
                 <div className="row">
                   <div className="col-lg-3">
                     <aside className="profile-info">
-                      <Link to={`/profile`}>
-                        <Image
-                          className="profile-info__image"
-                          src={user.photo}
-                          circle
-                          width={150}
-                          height={150}
-                          alt="Фотография пользователя"
-                        />
-                      </Link>
-                      <h2 className="profile-info__name">{user.name}</h2>
+                      <Image
+                        className="profile-info__image"
+                        src={user.photo}
+                        circle
+                        width={150}
+                        height={150}
+                        alt="Фотография пользователя"
+                      />
+                      <h3 className="profile-info__name">{user.name}</h3>
                       <nav className="aside-menu">
                         <ul className="aside-menu__list">
                           <li>
@@ -127,14 +125,19 @@ class Profile extends Component {
                       <Route
                         exact
                         path="/profile/settings"
-                        component={Settings}
+                        Settings
+                        render={() => <Settings user={user} />}
                       />
                       <Route
                         exact
                         path="/profile/medical-card"
                         component={MedicalCard}
                       />
-                      <Route exact path="/profile/events" component={Events} />
+                      <Route
+                        exact
+                        path="/profile/events"
+                        render={() => <Events user={user.events} />}
+                      />
                     </section>
                   </div>
                 </div>

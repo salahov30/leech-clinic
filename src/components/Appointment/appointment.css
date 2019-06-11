@@ -4,40 +4,40 @@
 
 .services-wrapper h2 {
   font-size: 35px;
+  margin-bottom: 35px;
 }
 
-.services-list {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-
-.services-list .services-list__item {
-  list-style-type: none;
-}
-
-.services-list__wrapper {
+.select-appointment {
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: 300;
+  padding: 15px 25px;
   margin-top: 25px;
-}
-
-.services-list__item .list-services__button {
-  background-color: rgba(104, 109, 224, 0.1);
-  display: inline-block;
-  border: 1px solid rgba(104, 109, 224, 0.5);
-  margin: 15px 0;
-  padding: 25px;
   width: 100%;
   cursor: pointer;
-  transition: .3s;
+  color: #333;
+  font-size: 17px;
 }
 
-.services-list__item .list-services__button:hover {
-  background-color: rgba(104, 109, 224, 0.5);
-  border: 1px solid rgba(104, 109, 224, 1);
+.service-item__button {
+  background-color: transparent;
+  display: inline-block;
+  text-align-last: left;
+  margin-top: 0;
+  color: #737373;
+  font-weight: 300;
 }
 
-.services-list__item .list-services__button:focus {
-  background-color: rgba(104, 109, 224, 0.5);
-  border: 1px solid rgba(104, 109, 224, 1);
+.service-item__button:hover {
+  background-color: transparent;
+}
+
+.service-item__button span {
+  display: inline-block;
+  margin-top: 25px;
+  color: #737373;
+}
+
+.service-item__button img {
+  vertical-align: middle;
 }

@@ -1,8 +1,8 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-import { getJwt } from '../../../helpers/jwt';
-import Icon from '../../Icon';
+import { getJwt } from "../../../helpers/jwt";
+import Image from "../../Image";
 
 const MenuList = () => (
   <>
@@ -16,7 +16,7 @@ const MenuList = () => (
         <NavLink to="/specialists">Специалисты</NavLink>
       </li>
       <li>
-        <NavLink to="/price">Услуги</NavLink>
+        <NavLink to="/services">Услуги</NavLink>
       </li>
       <li>
         <NavLink to="/about">О клинике</NavLink>
@@ -33,11 +33,19 @@ const MenuList = () => (
       <li>
         {getJwt() ? (
           <NavLink to="/profile" aria-label="Профиль">
-            <Icon name="fa fa-user" />
+            <Image
+              src={process.env.PUBLIC_URL + "/image/user.png"}
+              width={15}
+              height={15}
+            />
           </NavLink>
         ) : (
           <NavLink to="/login" aria-label="Вход в личный кабинет">
-            <Icon name="fa fa-user" />
+            <Image
+              src={process.env.PUBLIC_URL + "/image/user.png"}
+              width={15}
+              height={15}
+            />
           </NavLink>
         )}
       </li>
