@@ -8,6 +8,8 @@ import Input from "../../Input";
 import SpecicalistCard from "../../SpecialistCard";
 import Edit from "./Edit";
 import Button from "../../Button";
+import Form from "../../Form";
+import Textarea from "../../Textarea";
 
 export default class Specialists extends Component {
   state = {
@@ -104,7 +106,7 @@ export default class Specialists extends Component {
           </header>
 
           <section className="specialist-section section-add-specialist">
-            <form className="specialist-from">
+            <Form>
               <Input
                 id="fullname"
                 label="ФИО"
@@ -119,12 +121,12 @@ export default class Specialists extends Component {
                 onChange={this.handleInputChange}
                 required
               />
-              <Input
+              <Textarea
                 id="bio"
                 label="Биография"
                 onChange={this.handleInputChange}
               />
-              <Input
+              <Textarea
                 id="licenses"
                 label="Лицензии"
                 onChange={this.handleInputChange}
@@ -146,7 +148,7 @@ export default class Specialists extends Component {
               <Button className="secondary-btn" onClick={this.onSubmit}>
                 Добавить
               </Button>
-            </form>
+            </Form>
             <div className="specialist-card-wrapper">
               <SpecicalistCard
                 className="specicalist-card__form-add "

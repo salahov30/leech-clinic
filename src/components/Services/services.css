@@ -32,7 +32,7 @@ ul.tile-list li.tile-list__item {
   list-style-type: none;
   flex-direction: column;
   justify-content: center;
-  padding: 30px;
+  padding: 0;
   width: 275px;
   margin-left: -1px;
   margin-top: -1px;
@@ -47,20 +47,76 @@ ul.tile-list li.tile-list__item:hover {
   z-index: 1;
 }
 
-ul.tile-list li.tile-list__item a {
+ul.tile-list li.tile-list__item button {
   text-decoration: none;
-  display: block;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 25px;
+  align-content: space-between;
+  height: 100%;
   color: #41395f;
   font-weight: 300;
+  padding: 30px;
 }
 
-ul.tile-list li.tile-list__item a span {
+ul.tile-list li.tile-list__item button span.price {
   display: inline-block;
   color: #737373;
-  margin-top: 25px;
+  font-weight: 900;
+}
+
+ul.tile-list li.tile-list__item button span.description {
+  display: inline-block;
+  color: #737373;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+ul.tile-list li.tile-list__item button span img {
+  vertical-align: middle;
+}
+
+.calc-price-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  display: inline-block;
+  padding: 15px 25px;
+  background-color: #fff;
+  border: 1px solid #acb8ce;
+  box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, .1),
+    0 0.25rem 0.5rem rgba(90, 97, 105, .12),
+    0 0.9375rem 1.375rem rgba(90, 97, 105, .1),
+    0 0.4375rem 2.1875rem rgba(165, 182, 201, .1)
+}
+
+.output-price {
+  display: none;
+}
+
+.select-price {
+  color: #737373;
   font-weight: 300;
 }
 
-ul.tile-list li.tile-list__item a span img {
+.select-price img {
   vertical-align: middle;
+}
+
+.select-price-number {
+  font-weight: 600;
+}
+
+.select-date {
+  margin-left: 10px;
+}
+
+.select-specialist {
+  margin-left: 10px;
+}
+
+.button-wrapper {
+  margin-left: 25px;
+  display: inline-block;
 }

@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-import './button.css';
+import "./button.css";
 
 const Button = ({
   children,
@@ -20,9 +20,9 @@ const Button = ({
     }
   };
 
-  const classes = classNames('btn', className, { active });
+  const classes = classNames("btn", className, { active });
 
-  const Tag = attrs.href ? 'a' : 'button';
+  const Tag = attrs.href ? "a" : "button";
 
   return (
     <Tag
@@ -41,15 +41,15 @@ Button.propTypes = {
   onClick: PropTypes.func,
   className: PropTypes.string,
   disable: PropTypes.bool,
-  active: PropTypes.bool,
+  active: PropTypes.bool
 };
 
 Button.defaultProps = {
-  children: 'Default button',
+  children: "Default button",
   onClick: () => {},
-  className: '',
+  className: "",
   disabled: false,
-  active: false,
+  active: false
 };
 
 export default Button;

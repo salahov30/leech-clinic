@@ -6,7 +6,9 @@ import Preloader from "../../PreloaderButton";
 import Input from "../../Input";
 import ServiceItem from "../../Services/ServicesItem";
 import Button from "../../Button";
+import Form from "../../Form";
 import "./services.css";
+import Textarea from "../../Textarea";
 
 export default class Specialists extends Component {
   state = {
@@ -53,16 +55,14 @@ export default class Specialists extends Component {
   onSubmit = e => {
     e.preventDefault();
     const Specialists = {
-      fullname: this.state.fullname,
-      speciality: this.state.speciality,
-      bio: this.state.bio,
-      photo: this.state.photo,
-      licenses: this.state.licenses,
-      url: this.state.url
+      url: this.state.url,
+      name: this.state.name,
+      price: this.state.price,
+      description: this.state.description
     };
 
     axios
-      .put("http://localhost:5000/api/specialists", Specialists)
+      .put("http://localhost:5000/api/service", Specialists)
       .then(res => {
         console.log(res);
         this.setState({
@@ -78,18 +78,29 @@ export default class Specialists extends Component {
   };
 
   onEditServices = data => {
-    console.log(data);
-
     const isOpen = document.querySelector(".section-edit");
     isOpen.style.display = "grid";
+
     this.setState({
-      editData: data
+      editName: data.name,
+      editPrice: data.price,
+      editUrl: data.url,
+      editDescription: data.description
     });
   };
 
   render() {
-    const { isLoaded, services, url, name, price, editData } = this.state;
-    console.log(editData);
+    const {
+      isLoaded,
+      services,
+      url,
+      name,
+      price,
+      editName,
+      editPrice,
+      editUrl,
+      editDescription
+    } = this.state;
 
     return (
       <>
@@ -98,17 +109,10 @@ export default class Specialists extends Component {
             <header className="specialists-header">
               <h2>Добавить услугу</h2>
             </header>
-            <form className="specialist-from">
+            <Form>
               <Input
                 id="name"
                 label="Название"
-                type="text"
-                onChange={this.handleInputChange}
-                required
-              />
-              <Input
-                id="description"
-                label="Описание"
                 type="text"
                 onChange={this.handleInputChange}
                 required
@@ -118,6 +122,13 @@ export default class Specialists extends Component {
                 label="Цена"
                 onChange={this.handleInputChange}
               />
+              <Textarea
+                id="description"
+                label="Описание"
+                type="text"
+                onChange={this.handleInputChange}
+                required
+              />
               <Input
                 id="url"
                 label="Ссылка"
@@ -126,7 +137,7 @@ export default class Specialists extends Component {
               <Button className="secondary-btn" onClick={this.onSubmit}>
                 Добавить
               </Button>
-            </form>
+            </Form>
             <div className="service-item">
               <ul className="tile-list">
                 <li className="tile-list__item">
@@ -144,7 +155,7 @@ export default class Specialists extends Component {
           </header>
           <section className="specialist-section">
             {isLoaded ? (
-              <ul className="tile-list">
+              <ul className="tile-list dashboard-specialist-list">
                 {services.map((item, index) => (
                   <li key={index} className="tile-list__item">
                     <Button
@@ -156,6 +167,7 @@ export default class Specialists extends Component {
                         url={item.url}
                         name={item.name}
                         price={item.price}
+                        description={item.description}
                       />
                     </Button>
                   </li>
@@ -169,17 +181,10 @@ export default class Specialists extends Component {
             <header className="specialists-header">
               <h2>Изменить информацию об услуге</h2>
             </header>
-            <form className="specialist-from">
+            <Form className="specialist-from">
               <Input
                 id="name"
                 label="Название"
-                type="text"
-                onChange={this.handleInputChange}
-                required
-              />
-              <Input
-                id="description"
-                label="Описание"
                 type="text"
                 onChange={this.handleInputChange}
                 required
@@ -189,20 +194,32 @@ export default class Specialists extends Component {
                 label="Цена"
                 onChange={this.handleInputChange}
               />
+              <Textarea
+                id="description"
+                label="Описание"
+                type="text"
+                onChange={this.handleInputChange}
+                required
+              />
               <Input
                 id="url"
                 label="Ссылка"
                 onChange={this.handleInputChange}
               />
               <Button className="secondary-btn" onClick={this.onSubmit}>
-                Добавить
+                Изменить
               </Button>
-            </form>
+            </Form>
             <div className="service-item">
               <ul className="tile-list">
                 <li className="tile-list__item">
-                  <Link to={`${url}`} className="service-item__button">
-                    <ServiceItem url={url} name={name} price={price} />
+                  <Link to={`${editUrl}`} className="service-item__button">
+                    <ServiceItem
+                      url={editUrl}
+                      name={editName}
+                      price={editPrice}
+                      description={editDescription}
+                    />
                   </Link>
                 </li>
               </ul>

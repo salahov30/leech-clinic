@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-import './icon.css';
+import "./icon.css";
 
 const Icon = ({ name, className, size, onClick, disabled, ...attrs }) => {
   const classes = classNames(
     `${name}`,
     { func: onClick },
     { disabled },
-    className,
+    className
   );
 
   const elemSize = size ? { fontSize: `${size}rem` } : null;
@@ -29,15 +29,15 @@ Icon.propTypes = {
   className: PropTypes.string,
   size: PropTypes.number,
   onClick: PropTypes.func,
-  disabled: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 Icon.defaultProps = {
-  name: '',
-  className: '',
+  name: "",
+  className: "",
   size: null,
   onClick: null,
-  disabled: false,
+  disabled: false
 };
 
 export default Icon;

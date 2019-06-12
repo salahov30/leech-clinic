@@ -67,32 +67,25 @@ class Calendar extends React.Component {
 
   handlePrevMouthButtonClick = () => {
     const date = new Date(this.year, this.month - 1);
-
     this.setState({ date });
   };
 
   handleNextMouthButtonClick = () => {
     const date = new Date(this.year, this.month + 1);
-
     this.setState({ date });
   };
 
   handleSelectChange = () => {
     const year = this.yearSelect.value;
     const month = this.monthSelect.value;
-
     const date = new Date(year, month);
-
     this.setState({ date });
   };
 
   handleDayClick = date => {
     this.setState({ selectDate: date });
-
     this.props.onChange(date);
   };
-
-  onClick = () => {};
 
   render() {
     const { years, month, weekDay } = this.props;

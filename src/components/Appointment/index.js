@@ -8,16 +8,18 @@ import Button from "../Button";
 import SpecialistCard from "../SpecialistCard";
 import ServiceItem from "../Services/ServicesItem";
 import Preloader from "../PreloaderButton";
+import Image from "../Image";
+import { formatDate } from "../../helpers/formateDate";
 import "./appointment.css";
 
 class Appointment extends Component {
   state = {
-    service: [],
+    services: [],
     date: "",
-    data: "",
-    specialist: "",
-    user: "",
-    isLoaded: true
+    specialists: [],
+    isLoaded: true,
+    priceSelectServices: 0,
+    selectSpecialist: []
   };
 
   handleInputChange = ({ target }) => {
@@ -27,7 +29,7 @@ class Appointment extends Component {
   };
 
   updateData = value => {
-    this.setState({ date: value });
+    this.setState({ selectDate: value });
   };
 
   componentDidMount() {
@@ -35,7 +37,22 @@ class Appointment extends Component {
       .get("http://localhost:5000/api/service")
       .then(res => {
         this.setState({
-          service: res.data,
+          services: res.data,
+          isLoaded: true
+        });
+      })
+      .catch(err => {
+        this.setState({
+          error: err,
+          isLoaded: false
+        });
+      });
+
+    axios
+      .get("http://localhost:5000/api/specialists/")
+      .then(res => {
+        this.setState({
+          specialists: res.data,
           isLoaded: true
         });
       })
@@ -49,11 +66,10 @@ class Appointment extends Component {
 
   onRecord = e => {
     e.preventDefault();
-
     const event = {
-      service: this.state.service,
-      date: this.state.date,
-      specialist: this.state.specialist
+      services: this.state.service,
+      date: this.state.selectDate,
+      specialist: this.state.selectSpecialist
     };
     console.log(event);
 
@@ -71,8 +87,33 @@ class Appointment extends Component {
       });
   };
 
+  onColculation = (price, spec) => {
+    const priceValue = price.price;
+
+    const output = document.querySelector(".output-price");
+    output.style.display = "inline-block";
+
+    this.setState({
+      priceSelectServices: this.state.priceSelectServices + priceValue,
+      selectServices: spec
+    });
+  };
+
+  onSelectSpecialist = value => {
+    this.setState({
+      selectSpecialist: value
+    });
+  };
+
   render() {
-    const { service, isLoaded } = this.state;
+    const {
+      services,
+      specialists,
+      priceSelectServices,
+      selectDate,
+      selectSpecialist,
+      isLoaded
+    } = this.state;
 
     return (
       <>
@@ -88,30 +129,23 @@ class Appointment extends Component {
               </div>
             </div>
           </section>
-
           <section className="services">
             <div className="container">
-              {/* <form method="PUT">
-                <Input id="service" onChange={this.handleInputChange} />
-                <Input id="specialist" onChange={this.handleInputChange} />
-                <Input
-                  id="date"
-                  type="date"
-                  onChange={this.handleInputChange}
-                />
-                <Button onClick={this.onRecord}>Записаться</Button>
-              </form> */}
               <div className="services-wrapper">
                 <h2>Выберите услугу</h2>
                 {isLoaded ? (
                   <ul className="tile-list">
-                    {service.map((item, index) => (
+                    {services.map((item, index) => (
                       <li key={index} className="tile-list__item">
-                        <Button className="service-item__button">
+                        <Button
+                          className="service-item__button"
+                          onClick={() => this.onColculation(item, item._id)}
+                        >
                           <ServiceItem
                             key={index}
                             url={item.url}
                             name={item.name}
+                            description={item.description}
                             price={item.price}
                           />
                         </Button>
@@ -121,6 +155,26 @@ class Appointment extends Component {
                 ) : (
                   <Preloader />
                 )}
+                <div className="calc-price-wrapper output-price">
+                  <span className="select-price">
+                    Итог:
+                    <span className="select-price-number">
+                      {priceSelectServices}
+                    </span>
+                    <Image
+                      width={25}
+                      height={25}
+                      alt="Знак рубля"
+                      src={process.env.PUBLIC_URL + "/image/ruble.png"}
+                    />
+                    <span className="select-date">
+                      {!selectDate ? "" : formatDate(selectDate)}
+                    </span>
+                    <span className="select-specialist">
+                      {!selectSpecialist ? "" : selectSpecialist.fullname}
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
           </section>
@@ -136,39 +190,21 @@ class Appointment extends Component {
           </section>
           <section className="selected-specialist">
             <div className="container">
-              <div className="card-wrapper">
-                <SpecialistCard
-                  image={
-                    process.env.PUBLIC_URL + "/image/avatar-specialist-1.jpg"
-                  }
-                  name="Симоненко Алексей Юзва"
-                  specialty="Медбрат"
-                  textBtn="Выбрать"
-                />
-                <SpecialistCard
-                  image={
-                    process.env.PUBLIC_URL + "/image/avatar-specialist-2.jpg"
-                  }
-                  name="Климов Илья Сергеевич"
-                  specialty="Доктор"
-                  textBtn="Выбрать"
-                />
-                <SpecialistCard
-                  image={
-                    process.env.PUBLIC_URL + "/image/avatar-specialist-4.jpg"
-                  }
-                  name="Смирнова Анастасия Евгеньевна"
-                  specialty="Медсестра"
-                  textBtn="Выбрать"
-                />
-                <SpecialistCard
-                  image={
-                    process.env.PUBLIC_URL + "/image/avatar-specialist-3.jpg"
-                  }
-                  name="Климов Илья Сергеевич"
-                  specialty="Доктор"
-                  textBtn="Выбрать"
-                />
+              <div className="card-wrapper select-wrapper">
+                {isLoaded ? (
+                  specialists.map((specialist, index) => (
+                    <SpecialistCard
+                      key={index}
+                      name={specialist.fullname}
+                      specialty={specialist.speciality}
+                      image={specialist.photo}
+                      onClick={() => this.onSelectSpecialist(specialist)}
+                      textBtn="Выбрать"
+                    />
+                  ))
+                ) : (
+                  <Preloader />
+                )}
               </div>
               <Button onClick={this.onRecord}>Записаться</Button>
             </div>

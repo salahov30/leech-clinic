@@ -5,6 +5,7 @@ import axios from "axios";
 import Input from "../../Input";
 import SpecicalistCard from "../../SpecialistCard";
 import Button from "../../Button";
+import Textarea from "../../Textarea";
 
 class Edit extends Component {
   state = {
@@ -81,12 +82,12 @@ class Edit extends Component {
               onChange={this.handleInputChange}
               required
             />
-            <Input
+            <Textarea
               id="bio"
               label="Биография"
               onChange={this.handleInputChange}
             />
-            <Input
+            <Textarea
               id="licenses"
               label="Лицензии"
               onChange={this.handleInputChange}

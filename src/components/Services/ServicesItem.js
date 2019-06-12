@@ -6,7 +6,8 @@ const ServicesItem = props => {
   return (
     <>
       <h3>{props.name}</h3>
-      <span>
+      <span className="description">{props.description}</span>
+      <span className="price">
         {props.price}
         <Image
           width={25}

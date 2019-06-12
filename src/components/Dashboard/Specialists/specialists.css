@@ -81,6 +81,11 @@ form.specialist-from {
 
 .tile-list__button {
   background-color: transparent;
+  text-align: left;
+}
+
+.tile-list__button h3 {
+  text-align: center;
 }
 
 .tile-list__button:hover {

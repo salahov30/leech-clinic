@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import Menu from "../Menu";
 import Preloader from "../PreloaderButton";
 import ServiceItem from "./ServicesItem";
-
+import Button from "../Button";
+import Image from "../Image";
 import "./services.css";
 
 class Services extends Component {
   state = {
     service: [],
-    isLoaded: false
+    isLoaded: false,
+    calcPrice: 0
   };
 
   componentDidMount() {
@@ -32,8 +34,16 @@ class Services extends Component {
       });
   }
 
+  onColculation = price => {
+    const output = document.querySelector(".output-price");
+    output.style.display = "inline-block";
+    this.setState({
+      calcPrice: this.state.calcPrice + price
+    });
+  };
+
   render() {
-    const { service, isLoaded } = this.state;
+    const { service, isLoaded, calcPrice } = this.state;
 
     return (
       <>
@@ -55,20 +65,38 @@ class Services extends Component {
                   <ul className="tile-list">
                     {service.map((item, index) => (
                       <li key={index} className="tile-list__item">
-                        <Link to={`/services/${item.url}`}>
+                        <Button
+                          className="service-item__button"
+                          onClick={() => this.onColculation(item.price)}
+                        >
                           <ServiceItem
                             key={index}
                             url={item.url}
                             name={item.name}
+                            description={item.description}
                             price={item.price}
                           />
-                        </Link>
+                        </Button>
                       </li>
                     ))}
                   </ul>
                 ) : (
                   <Preloader />
                 )}
+                <div className="calc-price-wrapper output-price">
+                  <span className="calc-price">
+                    Итог: <span className="calc-price-number">{calcPrice}</span>
+                    <Image
+                      width={25}
+                      height={25}
+                      alt="Знак рубля"
+                      src={process.env.PUBLIC_URL + "/image/ruble.png"}
+                    />
+                  </span>
+                  <div className="button-wrapper">
+                    <Button>Записаться на прием</Button>
+                  </div>
+                </div>
               </article>
             </div>
           </section>

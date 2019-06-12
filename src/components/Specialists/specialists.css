@@ -69,6 +69,52 @@
   grid-gap: 25px;
 }
 
+.wrapper-specialist {
+  display: grid;
+  grid-gap: 25px;
+  grid-template-rows: auto;
+  grid-template-areas: "photo info"
+}
+
+.specialist-info {
+  grid-area: info
+}
+
+.specialist {
+  margin-top: 75px;
+}
+
+.specialist-photo {}
+
+.specialist-name {
+  margin-bottom: 25px;
+}
+
+.specialist-speciality {
+  color: var(--blue);
+  font-size: 24px;
+}
+
+.specialist-bio {
+  color: var(--text);
+  margin: 25px 0;
+  font-size: 24px;
+}
+
+.specialist-licenses {
+  color: var(--text);
+  font-size: 24px;
+
+}
+
+.education {
+  color: var(--text);
+  font-size: 24px;
+}
+
+.specialist-licenses li {}
+
+
 @media (min-width: 320px) and (max-width: 768px) {
   .card-wrapper {
     display: grid;

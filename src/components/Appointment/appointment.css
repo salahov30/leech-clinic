@@ -1,5 +1,12 @@
-.appointment-heading h1 {
-  margin-bottom: 50px;
+.heading h1 {
+  padding-bottom: 15px;
+}
+
+.services,
+.selected-date,
+.selected-specialist,
+.heading {
+  padding: 30px;
 }
 
 .services-wrapper h2 {
@@ -20,10 +27,13 @@
 }
 
 .service-item__button {
+  text-decoration: none;
+  width: 100%;
   background-color: transparent;
   display: inline-block;
-  text-align-last: left;
+  text-align: left;
   margin-top: 0;
+  padding: 30px;
   color: #737373;
   font-weight: 300;
 }
@@ -34,10 +44,15 @@
 
 .service-item__button span {
   display: inline-block;
+  line-height: 24px;
   margin-top: 25px;
   color: #737373;
 }
 
 .service-item__button img {
   vertical-align: middle;
+}
+
+.select-wrapper {
+  margin-bottom: 45px;
 }

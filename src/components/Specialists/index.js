@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
+import { BrowserRouter as Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import Menu from "../Menu";
@@ -7,6 +8,7 @@ import Image from "../Image";
 import Preloader from "../PreloaderButton";
 import SpecialistCard from "../SpecialistCard";
 import "./specialists.css";
+import SpecialistPage from "./specialistPage";
 
 class Specialists extends Component {
   state = {
@@ -40,6 +42,7 @@ class Specialists extends Component {
           <title>Специалисты</title>
         </Helmet>
         <Menu />
+
         <section className="specialists-wrapper">
           <div className="container">
             <div className="specialists-content">
@@ -74,13 +77,14 @@ class Specialists extends Component {
                   </div>
                 </div>
               </div>
+
               <div className="card-wrapper">
                 {isLoaded ? (
                   specialists.map((specialist, index) => (
                     <SpecialistCard
                       key={index}
                       name={specialist.fullname}
-                      specialty={specialist.speciality}
+                      speciality={specialist.speciality}
                       textLink="Подробнее"
                       linkUrl={`/specialists/${specialist.url}`}
                       image={specialist.photo}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 import { BrowserRouter, Route, withRouter, Link } from "react-router-dom";
 
 import Icon from "../Icon";
@@ -9,10 +10,40 @@ import Rewies from "./Rewies";
 import Users from "./Users";
 import Information from "./Information";
 import Button from "../Button";
+import { getJwt } from "../../helpers/jwt";
 
 import "./dashboard.css";
 
 export class Dashboard extends Component {
+  state = {
+    user: ""
+  };
+  componentDidMount() {
+    const jwt = getJwt();
+    if (!jwt) {
+      this.props.history.push("/login");
+    }
+
+    axios({
+      method: "GET",
+      url: "http://localhost:5000/api/user",
+      mode: "cors",
+      headers: { "auth-token": `${jwt}`, "Access-Control-Allow-Origin": true }
+    })
+      .then(res => {
+        if (res.data.role === "admin") {
+          this.props.history.push("/dashboard");
+        } else {
+          this.props.history.push("/profile");
+        }
+      })
+      .catch(err => {
+        localStorage.removeItem("auth-token");
+        this.props.history.push("/login");
+        console.log(err);
+      });
+  }
+
   onLogOut = e => {
     e.preventDefault();
     localStorage.removeItem("auth-token");
@@ -21,6 +52,9 @@ export class Dashboard extends Component {
 
   render() {
     const { match } = this.props;
+    const { user } = this.state;
+    console.log(user);
+
     return (
       <>
         <Helmet>

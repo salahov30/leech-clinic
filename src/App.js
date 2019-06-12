@@ -8,18 +8,18 @@ import Specialists from "./components/Specialists";
 import Appointment from "./components/Appointment";
 import Registration from "./components/Registration";
 import Services from "./components/Services";
-import Service from "./components/Services/Service";
 import Dashboard from "./components/Dashboard";
+import SpecialistsPage from "./components/Specialists/specialistPage";
 
 const App = () => (
   <>
     <Router>
       <Route exact path="/" component={Home} />
       <Route exact path="/specialists" component={Specialists} />
+      <Route exact path="/specialists/:id" component={SpecialistsPage} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/registration" component={Registration} />
       <Route exact path="/services" component={Services} />
-      <Route path="/services/:id" component={Service} />
       <Route exact path="/appointment" component={Appointment} />
       <Route path="/profile" component={Profile} />
       <Route path="/dashboard" component={Dashboard} />
