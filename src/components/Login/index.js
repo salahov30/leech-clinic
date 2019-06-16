@@ -8,6 +8,7 @@ import Button from "../Button";
 import Input from "../Input";
 import Icon from "../Icon";
 import { getJwt } from "../../helpers/jwt";
+import { HOST } from "../../constans";
 import PreloaderButton from "../PreloaderButton";
 
 import "./auth.css";
@@ -44,12 +45,14 @@ class Login extends Component {
         isLoaded: true
       });
     }
+
     const User = {
       phone: this.state.phone,
       password: this.state.password
     };
+
     axios
-      .post("http://localhost:5000/api/user/login", User)
+      .post(`${HOST}/api/user/login`, User)
       .then(res => {
         localStorage.setItem("auth-token", res.data);
         this.props.history.push("/profile");

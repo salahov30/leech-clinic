@@ -9,6 +9,7 @@ import Button from "../../Button";
 import Form from "../../Form";
 import "./services.css";
 import Textarea from "../../Textarea";
+import { HOST } from "../../../constans";
 
 export default class Specialists extends Component {
   state = {
@@ -18,7 +19,7 @@ export default class Specialists extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/service")
+      .get(`${HOST}/api/service`)
       .then(res => {
         this.setState({
           services: res.data,
@@ -62,7 +63,7 @@ export default class Specialists extends Component {
     };
 
     axios
-      .put("http://localhost:5000/api/service", Specialists)
+      .put(`${HOST}/api/service`, Specialists)
       .then(res => {
         console.log(res);
         this.setState({
@@ -82,11 +83,39 @@ export default class Specialists extends Component {
     isOpen.style.display = "grid";
 
     this.setState({
+      editId: data.id,
       editName: data.name,
       editPrice: data.price,
       editUrl: data.url,
       editDescription: data.description
     });
+  };
+
+  onEdit = e => {
+    e.preventDefault();
+    console.log(this.state.data.id);
+
+    const Specialists = {
+      id: this.state.editId,
+      url: this.state.url,
+      name: this.state.name,
+      price: this.state.price,
+      description: this.state.description
+    };
+
+    axios
+      .put(`${HOST}/api/service/update`, Specialists)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          approved: "Услуга обновлена"
+        });
+      })
+      .catch(err => {
+        this.setState({
+          error: err
+        });
+      });
   };
 
   render() {
@@ -192,6 +221,7 @@ export default class Specialists extends Component {
               <Input
                 id="price"
                 label="Цена"
+                type="number"
                 onChange={this.handleInputChange}
               />
               <Textarea
@@ -206,7 +236,7 @@ export default class Specialists extends Component {
                 label="Ссылка"
                 onChange={this.handleInputChange}
               />
-              <Button className="secondary-btn" onClick={this.onSubmit}>
+              <Button className="secondary-btn" onClick={this.onEdit}>
                 Изменить
               </Button>
             </Form>

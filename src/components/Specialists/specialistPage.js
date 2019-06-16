@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import Menu from "../Menu";
 import Image from "../Image";
 import Preloader from "../Preloader";
+import { HOST } from "../../constans";
 
 class SpecialistPage extends Component {
   state = {
@@ -17,7 +17,7 @@ class SpecialistPage extends Component {
       url: match.params.id
     };
     axios
-      .post("http://localhost:5000/api/specialists/specialist", url)
+      .post(`${HOST}/api/specialists/specialist`, url)
       .then(res => {
         this.setState({
           specialists: res.data,
@@ -57,9 +57,11 @@ class SpecialistPage extends Component {
                     <p className="specialist-bio">
                       Образование: {specialists.bio}
                     </p>
-                    <p className="education">Лицензии:</p>
+                    <p className="education">Сертификаты:</p>
                     <ul className="specialist-licenses">
-                      <li>{specialists.licenses}</li>
+                      {specialists.licenses.map(item => (
+                        <li>{item}</li>
+                      ))}
                     </ul>
                   </div>
                 </div>

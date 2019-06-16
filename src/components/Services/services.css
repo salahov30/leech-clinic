@@ -49,14 +49,13 @@ ul.tile-list li.tile-list__item:hover {
 
 ul.tile-list li.tile-list__item button {
   text-decoration: none;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 25px;
-  align-content: space-between;
+  display: flex;
   height: 100%;
   color: #41395f;
   font-weight: 300;
   padding: 30px;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 ul.tile-list li.tile-list__item button span.price {
@@ -78,9 +77,11 @@ ul.tile-list li.tile-list__item button span img {
 
 .calc-price-wrapper {
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 15px;
+  right: 15px;
   z-index: 999;
+  font-weight: 600;
+  color: #737373;
   display: inline-block;
   padding: 15px 25px;
   background-color: #fff;
@@ -89,6 +90,15 @@ ul.tile-list li.tile-list__item button span img {
     0 0.25rem 0.5rem rgba(90, 97, 105, .12),
     0 0.9375rem 1.375rem rgba(90, 97, 105, .1),
     0 0.4375rem 2.1875rem rgba(165, 182, 201, .1)
+}
+
+.calc-price-number {
+  font-weight: 600;
+  color: #1e4a9a;
+}
+
+.calc-price img {
+  vertical-align: middle;
 }
 
 .output-price {

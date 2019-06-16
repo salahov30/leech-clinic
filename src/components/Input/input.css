@@ -32,6 +32,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  margin: 15px 0;
 }
 
 .labelsWrapper {

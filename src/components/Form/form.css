@@ -1,11 +1,6 @@
 .form {
-  grid-area: form;
-  display: grid;
-  align-items: self-start;
-  grid-column: 1;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 30px;
-  grid-row-gap: 15px;
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   padding: 45px;
   border-radius: 15px;

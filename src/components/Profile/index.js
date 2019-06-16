@@ -17,6 +17,7 @@ import Personal from "./PersonalInfo";
 import MedicalCard from "./MedicalCard";
 import Events from "./Events";
 import Preloader from "../Preloader";
+import { HOST } from "../../constans";
 import "./profile.css";
 
 class Profile extends Component {
@@ -33,7 +34,7 @@ class Profile extends Component {
 
     axios({
       method: "GET",
-      url: "http://localhost:5000/api/user",
+      url: `${HOST}/api/user`,
       mode: "cors",
       headers: { "auth-token": `${jwt}`, "Access-Control-Allow-Origin": true }
     })
@@ -66,6 +67,7 @@ class Profile extends Component {
         </div>
       );
     }
+    console.log(user);
 
     return (
       <>

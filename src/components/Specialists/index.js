@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
-import { BrowserRouter as Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import Menu from "../Menu";
 import Image from "../Image";
 import Preloader from "../PreloaderButton";
 import SpecialistCard from "../SpecialistCard";
+import { HOST } from "../../constans";
 import "./specialists.css";
-import SpecialistPage from "./specialistPage";
 
 class Specialists extends Component {
   state = {
@@ -18,7 +17,7 @@ class Specialists extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/specialists")
+      .get(`${HOST}/api/specialists`)
       .then(res => {
         this.setState({
           specialists: res.data,

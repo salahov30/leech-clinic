@@ -21,12 +21,12 @@ const MenuList = () => (
       <li>
         <NavLink to="/about">О клинике</NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/rewies">Отзывы</NavLink>
-      </li>
-      <li>
+      </li> */}
+      {/* <li>
         <NavLink to="/contacts">Контакты</NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink to="/appointment">Записаться на прием</NavLink>
       </li>

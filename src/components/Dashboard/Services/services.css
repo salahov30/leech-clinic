@@ -1,13 +1,21 @@
 section.services-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'header header'
+    'from item';
   grid-gap: 50px;
   padding: 15px 0 70px;
 }
 
+.specialists-header {
+  grid-area: header
+}
+
 section.services-section form.services-from {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-area: form;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 30px;
   grid-row-gap: 15px;
   background-color: #fff;
@@ -26,5 +34,5 @@ section.section-edit__service {
 }
 
 .service-item {
-  grid-row: 2;
+  grid-area: item
 }

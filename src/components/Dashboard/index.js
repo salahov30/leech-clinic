@@ -6,11 +6,12 @@ import { BrowserRouter, Route, withRouter, Link } from "react-router-dom";
 import Icon from "../Icon";
 import Specialists from "./Specialists";
 import Services from "./Services/index";
-import Rewies from "./Rewies";
-import Users from "./Users";
-import Information from "./Information";
+// import Rewies from "./Rewies";
+// import Users from "./Users";
+// import Information from "./Information";
 import Button from "../Button";
 import { getJwt } from "../../helpers/jwt";
+import { HOST } from "../../constans";
 
 import "./dashboard.css";
 
@@ -26,7 +27,7 @@ export class Dashboard extends Component {
 
     axios({
       method: "GET",
-      url: "http://localhost:5000/api/user",
+      url: `${HOST}/api/user`,
       mode: "cors",
       headers: { "auth-token": `${jwt}`, "Access-Control-Allow-Origin": true }
     })
@@ -94,7 +95,7 @@ export class Dashboard extends Component {
                     </Link>
                   </li>
 
-                  <li className="navigation-item">
+                  {/* <li className="navigation-item">
                     <Link
                       to={`${match.url}/rewies`}
                       className="navigation-item__link"
@@ -113,15 +114,8 @@ export class Dashboard extends Component {
                         Пользователи
                       </span>
                     </Link>
-                  </li>
-                  <li className="navigation-item">
-                    <Link to={`${match.url}`} className="navigation-item__link">
-                      <Icon name="fas fa-info-circle" />
-                      <span className="navigation-item__link-url">
-                        Информация
-                      </span>
-                    </Link>
-                  </li>
+                  </li> */}
+
                   <li className="navigation-item">
                     <a href="/" className="navigation-item__link">
                       <Icon name="far fa-window-maximize" />
@@ -150,21 +144,6 @@ export class Dashboard extends Component {
                 exact
                 path={`${match.url}/services`}
                 render={() => <Services />}
-              />
-              <Route
-                exact
-                path={`${match.url}/rewies`}
-                render={() => <Rewies />}
-              />
-              <Route
-                exact
-                path={`${match.url}/users`}
-                render={() => <Users />}
-              />
-              <Route
-                exact
-                path={`${match.url}`}
-                render={() => <Information />}
               />
             </section>
           </main>

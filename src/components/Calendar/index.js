@@ -88,7 +88,7 @@ class Calendar extends React.Component {
   };
 
   render() {
-    const { years, month, weekDay } = this.props;
+    const { years, month, weekDay, updateData } = this.props;
     const { currentDate, selectDate } = this.state;
 
     const monthData = calendar.getMonthDate(this.year, this.month);
@@ -152,7 +152,11 @@ class Calendar extends React.Component {
                             className="calendar-btn"
                             onClick={e => {
                               e.preventDefault();
-                              this.props.updateData(this.state.selectDate);
+                              const output = document.querySelector(
+                                ".output-price"
+                              );
+                              output.style.display = "inline-block";
+                              updateData(this.state.selectDate);
                             }}
                           >
                             {date.getDate()}

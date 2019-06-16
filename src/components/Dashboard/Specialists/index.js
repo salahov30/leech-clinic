@@ -10,6 +10,7 @@ import Edit from "./Edit";
 import Button from "../../Button";
 import Form from "../../Form";
 import Textarea from "../../Textarea";
+import { HOST } from "../../../constans";
 
 export default class Specialists extends Component {
   state = {
@@ -19,7 +20,7 @@ export default class Specialists extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/specialists")
+      .get(`${HOST}/api/specialists`)
       .then(res => {
         this.setState({
           specialists: res.data,
@@ -65,7 +66,7 @@ export default class Specialists extends Component {
     };
 
     axios
-      .put("http://localhost:5000/api/specialists", Specialists)
+      .put(`${HOST}/api/specialists`, Specialists)
       .then(res => {
         console.log(res);
         this.setState({

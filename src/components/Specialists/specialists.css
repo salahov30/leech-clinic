@@ -112,7 +112,9 @@
   font-size: 24px;
 }
 
-.specialist-licenses li {}
+.specialist-licenses li {
+  margin-top: 15px;
+}
 
 
 @media (min-width: 320px) and (max-width: 768px) {

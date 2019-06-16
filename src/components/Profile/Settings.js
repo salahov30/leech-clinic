@@ -6,6 +6,7 @@ import Input from "../Input";
 import Button from "../Button";
 import Image from "../Image";
 import Preloader from "../Preloader";
+import { HOST } from "../../constans";
 
 class Settings extends Component {
   state = {
@@ -55,7 +56,7 @@ class Settings extends Component {
     };
 
     axios
-      .post("http://localhost:5000/api/user/update", User)
+      .post(`${HOST}/api/user/update`, User)
       .then(() => {
         this.props.history.push("/profile");
       })

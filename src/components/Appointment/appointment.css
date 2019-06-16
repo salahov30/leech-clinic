@@ -56,3 +56,38 @@
 .select-wrapper {
   margin-bottom: 45px;
 }
+
+.error-appointment {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 15px 45px;
+  background-color: #ff8080;
+  border: solid 1px red;
+  color: #000;
+  font-weight: 600;
+}
+
+.time-btn {
+  background-color: transparent;
+  box-sizing: border-box;
+  border: solid 1px #ced2d6;
+  border-radius: unset;
+  padding: 25px 25px;
+  margin-right: 1px;
+  color: #000;
+}
+
+.time-btn:hover {
+  background-color: rgba(104, 109, 224, 0.5);
+  color: #fff;
+}
+
+.time-btn:focus {
+  border: 1px solid #686ce1;
+}
+
+.error-appointment img {
+  vertical-align: text-bottom;
+  margin-right: 15px;
+}

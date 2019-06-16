@@ -66,8 +66,7 @@ span.section-add-specialist__callback {
 form.specialist-from {
   grid-area: form;
   display: grid;
-  grid-column: 1;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 30px;
   grid-row-gap: 15px;
   background-color: #fff;

@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import Button from "../Button";
 import Icon from "../Icon";
 import { formatDate } from "../../helpers/formateDate";
+import { HOST } from "../../constans";
 import "./profile.css";
 import axios from "axios";
 
@@ -13,14 +14,14 @@ class PersonalInfo extends Component {
     status: null
   };
 
-  onDismiss(id) {
+  onDismiss = id => {
     this.setState(prevState => ({
       events: prevState.events.filter(el => el._id !== id)
     }));
+
     axios
-      .delete(`http://localhost:5000/api/user/events/${id}`)
+      .delete(`${HOST}/api/user/events/${id}`)
       .then(() => {
-        this.props.history.push("/profile/events");
         this.setState({
           status: 200
         });
@@ -30,7 +31,7 @@ class PersonalInfo extends Component {
           status: 400
         })
       );
-  }
+  };
 
   render() {
     const { events, status } = this.state;
@@ -50,15 +51,18 @@ class PersonalInfo extends Component {
               <div>
                 <ul className="events-header">
                   <li>Услуга</li>
-                  <li>Специалист</li>
+                  <li />
                   <li>Дата</li>
                   <li>Отказ от услуги</li>
                 </ul>
                 <ul className="event-list">
                   {events.map((event, i) => (
                     <div className="events-item" key={i}>
-                      <li>{event.service}</li>
-                      <li>{event.specialist}</li>
+                      <li>
+                        {event.service.join(", ")}
+                        <br />
+                      </li>
+                      <li>{event.time}</li>
                       <li>{formatDate(event.date)}</li>
                       <li>
                         <Button

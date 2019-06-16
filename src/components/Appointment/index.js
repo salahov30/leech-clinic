@@ -5,21 +5,23 @@ import axios from "axios";
 import Menu from "../Menu";
 import Calandar from "../Calendar";
 import Button from "../Button";
-import SpecialistCard from "../SpecialistCard";
 import ServiceItem from "../Services/ServicesItem";
 import Preloader from "../PreloaderButton";
 import Image from "../Image";
 import { formatDate } from "../../helpers/formateDate";
+import { getJwt } from "../../helpers/jwt";
+import { HOST } from "../../constans";
+
 import "./appointment.css";
 
 class Appointment extends Component {
   state = {
     services: [],
-    date: "",
-    specialists: [],
-    isLoaded: true,
+    constServices: [],
     priceSelectServices: 0,
-    selectSpecialist: []
+    isLoaded: true,
+    onRecord: false,
+    date: ""
   };
 
   handleInputChange = ({ target }) => {
@@ -34,25 +36,10 @@ class Appointment extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/service")
+      .get(`${HOST}/api/service`)
       .then(res => {
         this.setState({
           services: res.data,
-          isLoaded: true
-        });
-      })
-      .catch(err => {
-        this.setState({
-          error: err,
-          isLoaded: false
-        });
-      });
-
-    axios
-      .get("http://localhost:5000/api/specialists/")
-      .then(res => {
-        this.setState({
-          specialists: res.data,
           isLoaded: true
         });
       })
@@ -66,54 +53,111 @@ class Appointment extends Component {
 
   onRecord = e => {
     e.preventDefault();
-    const event = {
-      services: this.state.service,
+    const jwt = getJwt();
+    if (!jwt) {
+      return this.props.history.push("/login");
+    }
+
+    const Event = {
+      service: this.state.constServices,
       date: this.state.selectDate,
-      specialist: this.state.selectSpecialist
+      time: this.state.selectTime
     };
-    console.log(event);
 
-    axios
-      .put("http://localhost:5000/api/user/events", event)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err.request);
-
-        this.setState({
-          error: err
-        });
+    if (
+      Event.service.length === 0 ||
+      Event.date === undefined ||
+      Event.time === undefined
+    ) {
+      this.setState({
+        err: "Сделайте выбор"
       });
+    } else {
+      axios({
+        method: "PUT",
+        url: `${HOST}/api/user/events`,
+        mode: "cors",
+        headers: {
+          "auth-token": `${jwt}`,
+          "Access-Control-Allow-Origin": true
+        },
+        data: Event
+      })
+        .then(() => {
+          this.props.history.push("/profile/events");
+          this.setState({
+            onRecord: true
+          });
+        })
+        .catch(err => {
+          console.log(err.request);
+          this.setState({
+            error: err
+          });
+        });
+    }
   };
 
-  onColculation = (price, spec) => {
-    const priceValue = price.price;
-
+  onSelectService = (service, index, value) => {
+    const priceValue = service.price;
     const output = document.querySelector(".output-price");
+    const servicesBtn = document.getElementById(`${index}`);
     output.style.display = "inline-block";
-
+    servicesBtn.disabled = true;
     this.setState({
       priceSelectServices: this.state.priceSelectServices + priceValue,
-      selectServices: spec
+      selectServices: this.state.constServices.push(service.name)
     });
   };
 
-  onSelectSpecialist = value => {
+  onSelectTime = value => {
+    const output = document.querySelector(".output-price");
+    output.style.display = "inline-block";
     this.setState({
-      selectSpecialist: value
+      selectTime: value
+    });
+  };
+
+  onClearSelected = () => {
+    const output = document.querySelector(".output-price");
+    const servicesBtn = document.querySelectorAll(".service-item__button");
+    console.log(servicesBtn);
+
+    output.style.display = "none";
+    servicesBtn.forEach(item => (item.disabled = false));
+
+    this.setState({
+      selectTime: null,
+      priceSelectServices: null,
+      selectServices: null,
+      date: null
     });
   };
 
   render() {
     const {
       services,
-      specialists,
       priceSelectServices,
       selectDate,
       selectSpecialist,
-      isLoaded
+      isLoaded,
+      onRecord,
+      selectTime,
+      err
     } = this.state;
+
+    const dataTime = [
+      "8:00",
+      "9:00",
+      "11:00",
+      "12:00",
+      "14:30",
+      "15:00",
+      "16:00",
+      "17:00",
+      "18:00",
+      "19:00"
+    ];
 
     return (
       <>
@@ -121,6 +165,7 @@ class Appointment extends Component {
           <title>Запись на прием</title>
         </Helmet>
         <Menu />
+        <button onClick={this.onClearSelected}>clear</button>
         <main>
           <section className="heading">
             <div className="container">
@@ -138,8 +183,9 @@ class Appointment extends Component {
                     {services.map((item, index) => (
                       <li key={index} className="tile-list__item">
                         <Button
+                          id={index}
                           className="service-item__button"
-                          onClick={() => this.onColculation(item, item._id)}
+                          onClick={() => this.onSelectService(item, index)}
                         >
                           <ServiceItem
                             key={index}
@@ -173,6 +219,7 @@ class Appointment extends Component {
                     <span className="select-specialist">
                       {!selectSpecialist ? "" : selectSpecialist.fullname}
                     </span>
+                    <span>{selectTime}</span>
                   </span>
                 </div>
               </div>
@@ -182,31 +229,44 @@ class Appointment extends Component {
             <div className="container">
               <div className="selected-date-wrapper">
                 <div className="selected-date__heading">
-                  <h2>Выберите дату</h2>
+                  <h2>Выберите дату и время</h2>
                 </div>
                 <Calandar updateData={this.updateData} />
+                <div className="time-wrapper select-wrapper">
+                  {dataTime.map((time, index) => (
+                    <Button
+                      key={index}
+                      className="time-btn"
+                      onClick={() => {
+                        this.onSelectTime(time);
+                      }}
+                    >
+                      {time}
+                    </Button>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
           <section className="selected-specialist">
             <div className="container">
-              <div className="card-wrapper select-wrapper">
-                {isLoaded ? (
-                  specialists.map((specialist, index) => (
-                    <SpecialistCard
-                      key={index}
-                      name={specialist.fullname}
-                      specialty={specialist.speciality}
-                      image={specialist.photo}
-                      onClick={() => this.onSelectSpecialist(specialist)}
-                      textBtn="Выбрать"
-                    />
-                  ))
-                ) : (
-                  <Preloader />
-                )}
-              </div>
-              <Button onClick={this.onRecord}>Записаться</Button>
+              {onRecord ? (
+                <Preloader />
+              ) : (
+                <Button onClick={this.onRecord}>Записаться</Button>
+              )}
+              {err ? (
+                <span className="error-appointment">
+                  <Image
+                    src={process.env.PUBLIC_URL + "./image/cancel.svg"}
+                    width={20}
+                    height={20}
+                  />
+                  {err}
+                </span>
+              ) : (
+                ""
+              )}
             </div>
           </section>
         </main>

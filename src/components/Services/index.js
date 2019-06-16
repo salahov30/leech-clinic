@@ -8,6 +8,7 @@ import Preloader from "../PreloaderButton";
 import ServiceItem from "./ServicesItem";
 import Button from "../Button";
 import Image from "../Image";
+import { HOST } from "../../constans";
 import "./services.css";
 
 class Services extends Component {
@@ -19,7 +20,7 @@ class Services extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/service")
+      .get(`${HOST}/api/service`)
       .then(res => {
         this.setState({
           service: res.data,
@@ -34,9 +35,11 @@ class Services extends Component {
       });
   }
 
-  onColculation = price => {
+  onColculation = (price, index) => {
     const output = document.querySelector(".output-price");
     output.style.display = "inline-block";
+    const servicesBtn = document.getElementById(`${index}`);
+    servicesBtn.disabled = true;
     this.setState({
       calcPrice: this.state.calcPrice + price
     });
@@ -66,8 +69,9 @@ class Services extends Component {
                     {service.map((item, index) => (
                       <li key={index} className="tile-list__item">
                         <Button
+                          id={index}
                           className="service-item__button"
-                          onClick={() => this.onColculation(item.price)}
+                          onClick={() => this.onColculation(item.price, index)}
                         >
                           <ServiceItem
                             key={index}
@@ -93,9 +97,6 @@ class Services extends Component {
                       src={process.env.PUBLIC_URL + "/image/ruble.png"}
                     />
                   </span>
-                  <div className="button-wrapper">
-                    <Button>Записаться на прием</Button>
-                  </div>
                 </div>
               </article>
             </div>

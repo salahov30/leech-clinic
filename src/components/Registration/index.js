@@ -9,6 +9,7 @@ import Input from "../Input";
 import Icon from "../Icon";
 import PreloaderButton from "../PreloaderButton";
 import "./registration.css";
+import { HOST } from "../../constans";
 
 export class Registration extends Component {
   _isMounted = false;
@@ -56,7 +57,7 @@ export class Registration extends Component {
       password: this.state.password
     };
     axios
-      .put("http://localhost:5000/api/user/register", User)
+      .put(`${HOST}/api/user/register`, User)
       .then(res => {
         this.props.history.push("/login");
         if (this._isMounted) {
