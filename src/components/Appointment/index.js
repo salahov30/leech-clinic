@@ -70,7 +70,7 @@ class Appointment extends Component {
       Event.time === undefined
     ) {
       this.setState({
-        err: "Сделайте выбор"
+        err: "Выберите услугу, дату и время"
       });
     } else {
       axios({
@@ -130,7 +130,7 @@ class Appointment extends Component {
       selectTime: null,
       priceSelectServices: null,
       selectServices: null,
-      date: null
+      selectDate: null
     });
   };
 
@@ -165,7 +165,6 @@ class Appointment extends Component {
           <title>Запись на прием</title>
         </Helmet>
         <Menu />
-        <button onClick={this.onClearSelected}>clear</button>
         <main>
           <section className="heading">
             <div className="container">
@@ -221,6 +220,13 @@ class Appointment extends Component {
                     </span>
                     <span>{selectTime}</span>
                   </span>
+                  <Button onClick={this.onClearSelected} className="clear-btn">
+                    <Image
+                      src={process.env.PUBLIC_URL + "./image/cancel.png"}
+                      width={15}
+                      height={15}
+                    />
+                  </Button>
                 </div>
               </div>
             </div>
