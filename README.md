@@ -1,4 +1,4 @@
-## Client part wep aplication "Leech clinic"
+## Client part web aplication "Leech clinic"
 
 In the project directory, you can run:
 
