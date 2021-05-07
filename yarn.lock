@@ -7946,13 +7946,6 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-animated-slider@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/react-animated-slider/-/react-animated-slider-1.1.4.tgz#01c63cb6cc85fa0452978f72cf579d7868b8b5a9"
-  integrity sha512-tXPOcokV8OUzZ4yBesAa+O8fmkA3ioLLAmYzdaVZHX2aS+9DnUHJRlNNSXdNfvqCFRHqfdq+dviU4Dmk4xirfw==
-  dependencies:
-    react "^16.4.1"
-
 react-app-polyfill@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-1.0.1.tgz#809a858e44f9564c7f4205e173076f90048274f1"
@@ -8150,7 +8143,7 @@ react-yandex-maps@^3.0.2:
     prop-types "^15.6.2"
     react-display-name "^0.2.4"
 
-react@^16.4.1, react@^16.8.6:
+react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==
@@ -9464,9 +9457,9 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 ua-parser-js@^0.7.18:
-  version "0.7.19"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"
-  integrity sha512-T3PVJ6uz8i0HzPxOF9SWzWAlfN/DavlpQqepn22xgve/5QecC+XMCAtmUNnY7C9StehaV6exjUCI801lOI7QlQ==
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
+  integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
 
 uglify-js@3.4.x:
   version "3.4.10"
